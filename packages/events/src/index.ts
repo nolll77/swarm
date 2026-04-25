@@ -76,7 +76,7 @@ export class EventBus {
 
           if (!results) continue;
 
-          for (const [, messages] of results) {
+          for (const [, messages] of results as [string, [string, string[]][]][]) {
             for (const [messageId, fields] of messages) {
               const dataIndex = fields.indexOf("data");
               if (dataIndex === -1) continue;
