@@ -109,6 +109,13 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [services/multi-cloud-controller/src/providers/gcp.ts](file:///Users/nolll/Documents/amaswarn/services/multi-cloud-controller/src/providers/gcp.ts) : Injection de dependance specifique a GCP (Cloud Run / GCS).
   - [services/multi-cloud-controller/src/index.ts](file:///Users/nolll/Documents/amaswarn/services/multi-cloud-controller/src/index.ts) : Abstract Factory qui lit la variable d'environnement `CLOUD_PROVIDER` et instancie la classe adequte, repondant a l'evenement `INFRA_PROVISION_REQUESTED`.
 
+## 17. Livraison Continue Elite (GitOps ArgoCD)
+- **Proposition :** Automatisation du "Dernier Kilomètre" par synchronisation continue du code et de l'état de l'infrastructure.
+- **Preuves Code :**
+  - [infra/kubernetes/argocd/root-application.yaml](file:///Users/nolll/Documents/amaswarn/infra/kubernetes/argocd/root-application.yaml) : Point d'entree Master (App of Apps) orchestrant le cycle de vie du SaaS complet.
+  - [infra/kubernetes/argocd/overlays/production/apps.yaml](file:///Users/nolll/Documents/amaswarn/infra/kubernetes/argocd/overlays/production/apps.yaml) : Definition declarative des applications microservices (API, Workers) pointees vers le depot `nolll77/swarm.git`.
+  - [infra/kubernetes/argocd/overlays/production/kustomization.yaml](file:///Users/nolll/Documents/amaswarn/infra/kubernetes/argocd/overlays/production/kustomization.yaml) : Binding final de la logique Kustomize pour gerer les environnements de maniere heritee et propre.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"

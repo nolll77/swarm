@@ -111,6 +111,7 @@ Implémenté via AWS Global Accelerator et Route53.
 ### Delivery
 - [x] **Canary Release Controller :** Déploiement progressif des nouvelles versions de ton API avec rollback automatique si les erreurs augmentent.
 - [x] **Cross-Cloud Support :** Extension du backend pour supporter GCP ou Azure en plus d'AWS.
+- [x] **GitOps ArgoCD :** Système de synchronisation continue via ArgoCD pour une livraison automatisée "Elite".
 
 ---
 

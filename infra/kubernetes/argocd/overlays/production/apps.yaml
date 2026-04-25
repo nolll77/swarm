@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: amaswarn-api-gateway
+  namespace: argocd
+spec:
+  project: amaswarn-project
+  source:
+    repoURL: https://github.com/nolll77/swarm.git
+    targetRevision: HEAD
+    path: infra/kubernetes
+    directory:
+      include: 'api-gateway.yaml'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: amaswarn-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: amaswarn-workers
+  namespace: argocd
+spec:
+  project: amaswarn-project
+  source:
+    repoURL: https://github.com/nolll77/swarm.git
+    targetRevision: HEAD
+    path: infra/kubernetes
+    directory:
+      include: 'agent-workers.yaml'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: amaswarn-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
