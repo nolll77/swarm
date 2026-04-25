@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: theme('colors.background');
+  color: theme('colors.text-primary');
+}
+
+@layer components {
+  .card-premium {
+    @apply bg-card border border-border rounded-xl p-6 shadow-2xl;
+  }
+}
