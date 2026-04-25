@@ -113,6 +113,10 @@ Implémenté via AWS Global Accelerator et Route53.
 - [x] **Cross-Cloud Support :** Extension du backend pour supporter GCP ou Azure en plus d'AWS.
 - [x] **GitOps ArgoCD :** Système de synchronisation continue via ArgoCD pour une livraison automatisée "Elite".
 
+### Gouvernance & Business
+- [x] **Investor Pitch Deck :** Support de présentation premium (Style Linear/Stripe) pour levée de fonds.
+- [x] **Business Case France :** Analyse du ROI, TCO et conformité RGPD/ANSSI adaptée au marché européen.
+
 ---
 
 # Bilan d'Implémentation des Modules Stratégiques (Phase 1 & 2 Roadmap)

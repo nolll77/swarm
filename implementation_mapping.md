@@ -116,6 +116,13 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [infra/kubernetes/argocd/overlays/production/apps.yaml](file:///Users/nolll/Documents/amaswarn/infra/kubernetes/argocd/overlays/production/apps.yaml) : Definition declarative des applications microservices (API, Workers) pointees vers le depot `nolll77/swarm.git`.
   - [infra/kubernetes/argocd/overlays/production/kustomization.yaml](file:///Users/nolll/Documents/amaswarn/infra/kubernetes/argocd/overlays/production/kustomization.yaml) : Binding final de la logique Kustomize pour gerer les environnements de maniere heritee et propre.
 
+## 18. Vision & Strategie Go-To-Market
+- **Proposition :** Transformation d'un actif technique en un produit commercialisable de grade institutionnel.
+- **Preuves Vision :**
+  - [docs/business_case_france.md](file:///Users/nolll/Documents/amaswarn/docs/business_case_france.md) : Analyse financiere complete (ROI, TCO) adaptee aux normes francaises (€, RGPD, ANSSI).
+  - [docs/pitch_deck_notion.md](file:///Users/nolll/Documents/amaswarn/docs/pitch_deck_notion.md) : Support de vente haut de gamme structurant la valeur par rapport aux problemes reels du marche.
+  - [Visual Designs](file:///Users/nolll/Documents/amaswarn/docs/) : Mockups premium (Linear/Stripe style) demontrant la maturite UX du dashboard de management et de la securite.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
