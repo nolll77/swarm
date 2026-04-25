@@ -218,7 +218,7 @@ async function start() {
         details: {
           period: "last_hour",
           accessCount: log.length,
-          uniqueSecrets: [...new Set(log.map((e) => e.secretId))],
+          uniqueSecrets: Array.from(new Set<string>(log.map((e) => e.secretId))),
           cacheStats: vault.getCacheStats(),
         },
       },

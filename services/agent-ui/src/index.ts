@@ -53,11 +53,11 @@ Rules:
 
   // Extract file paths from diff headers
   const fileMatches = diff.match(/^(?:\+\+\+|---) [ab]\/(.+)$/gm) || [];
-  const filesChanged = [...new Set(
+  const filesChanged: string[] = Array.from(new Set(
     fileMatches
       .map((m) => m.replace(/^(?:\+\+\+|---) [ab]\//, ""))
       .filter((f) => f !== "/dev/null")
-  )];
+  ));
 
   return { diff, filesChanged };
 }
