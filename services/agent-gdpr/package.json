@@ -8,9 +8,9 @@
     "dev": "ts-node-dev src/index.ts"
   },
   "dependencies": {
-    "@ai-dev/events": "workspace:*",
-    "@ai-dev/logger": "workspace:*",
-    "@ai-dev/shared": "workspace:*",
+    "@ai-dev/events": "*",
+    "@ai-dev/logger": "*",
+    "@ai-dev/shared": "*",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
