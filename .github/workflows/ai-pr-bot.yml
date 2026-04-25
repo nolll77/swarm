@@ -1,0 +1,37 @@
+name: Amaswarn Swarm Autonomous Bot
+
+on:
+  issues:
+    types: [labeled] # Trigger when label 'ai-request' is added
+
+jobs:
+  swarm-dev:
+    if: contains(github.event.issue.labels.*.name, 'ai-request')
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Swarm Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm install
+
+      - name: AI Dispatcher
+        run: npm run ai:plan "Process Issue #${{ github.event.issue.number }}: ${{ github.event.issue.title }}"
+
+      - name: AI Executor (Code generation)
+        run: npm run ai:code "Implement #${{ github.event.issue.number }}"
+
+      - name: Git Push & PR
+        run: |
+          node .ai/bot/git_engine.js
+          node .ai/bot/pr_builder.js

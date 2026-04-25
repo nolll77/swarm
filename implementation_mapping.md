@@ -195,6 +195,14 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [.github/workflows/ai-ci.yml](file:///Users/nolll/Documents/amaswarn/.github/workflows/ai-ci.yml) : Pipeline GitHub Actions orchestrant les guards statiques, les tests et l'audit IA.
   - [.ai/ci/rules/quality_gates.md](file:///Users/nolll/Documents/amaswarn/.ai/ci/rules/quality_gates.md) : Pare-feu de production infranchissable pour garantir la stabilite du SaaS.
 
+## 28. GitHub Autonomous PR Bot (Closing the Loop)
+- **Proposition :** Automatisation complete du cycle Issue -> PR, declenchee par un simple label sur GitHub, permettant a l'IA d'agir comme un contributeur pro-actif.
+- **Preuves Code :**
+  - [.ai/bot/dispatcher.md](file:///Users/nolll/Documents/amaswarn/.ai/bot/dispatcher.md) : Triage cognitif des tickets GitHub et affectation aux micro-agents specialises.
+  - [.ai/bot/git_engine.md](file:///Users/nolll/Documents/amaswarn/.ai/bot/git_engine.md) : Automatisation des operations Git (Branching, Conventional Commits, Push).
+  - [.ai/bot/pr_builder.md](file:///Users/nolll/Documents/amaswarn/.ai/bot/pr_builder.md) : Generation de Pull Requests documentees avec résumé d'impact architectural.
+  - [.github/workflows/ai-pr-bot.yml](file:///Users/nolll/Documents/amaswarn/.github/workflows/ai-pr-bot.yml) : Workflow GitHub Actions orchestrant le cycle de développement autonome de l'essaim.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
