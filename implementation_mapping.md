@@ -139,6 +139,14 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [dashboard/src/app/page.tsx](file:///Users/nolll/Documents/amaswarn/dashboard/src/app/page.tsx) : Dashboard interactif anime avec **Framer Motion**, trackant en temps reel les PRs generees par l'essaim.
   - [dashboard/src/app/api/prs/route.ts](file:///Users/nolll/Documents/amaswarn/dashboard/src/app/api/prs/route.ts) : Proxy API securise vers GitHub pour le monitoring live.
 
+## 21. Essaim Distribue (Multi-Agent Distributed Swarm)
+- **Proposition :** Decouplage total des responsabilites IA via une architecture event-driven distribuee sur Kubernetes.
+- **Preuves Code :**
+  - [services/vector-memory/src/lib/indexer.ts](file:///Users/nolll/Documents/amaswarn/services/vector-memory/src/lib/indexer.ts) : Context Engine avec chunking et embeddings OpenAI pour une intelligence contextuelle profonde.
+  - [services/agent-coder/src/lib/diff-engine.ts](file:///Users/nolll/Documents/amaswarn/services/agent-coder/src/lib/diff-engine.ts) : Diff Engine chirurgical (Git Unified Diffs) pour une precision de code elite.
+  - [services/orchestrator/src/lib/swarm-orchestrator.ts](file:///Users/nolll/Documents/amaswarn/services/orchestrator/src/lib/swarm-orchestrator.ts) : Orchestrateur d'essaim orchestrant les agents Planner, Context, Coder et Reviewer via Redis Pub/Sub.
+  - [docker-compose.yml](file:///Users/nolll/Documents/amaswarn/docker-compose.yml) : Orchestration locale des 22 microservices simulant l'environnement Kubernetes final.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
