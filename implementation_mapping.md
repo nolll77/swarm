@@ -186,6 +186,15 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [.ai/index/event_map.md](file:///Users/nolll/Documents/amaswarn/.ai/index/event_map.md) : Cartographie reactive liant les producteurs et consommateurs d'evenements au sein du bus.
   - [.ai/ci/ai-review-rules.md](file:///Users/nolll/Documents/amaswarn/.ai/ci/ai-review-rules.md) : Regles de filtrage automatees imposant les standards SOC2/RGPD lors des revues de code.
 
+## 27. Production AI CI/CD (Self-Healing Pipeline)
+- **Proposition :** Transformation de la CI en un systeme actif capable de reviewer architecturalement le code et de se reparer de maniere autonome.
+- **Preuves Code :**
+  - [.ai/runtime/ci_orchestrator.md](file:///Users/nolll/Documents/amaswarn/.ai/runtime/ci_orchestrator.md) : Cerveau du pipeline gerant la sequence de validation et les boucles de correction.
+  - [.ai/runtime/review_engine.md](file:///Users/nolll/Documents/amaswarn/.ai/runtime/review_engine.md) : Moteur d'audit Staff Engineer simulant une revue de code experte axée sur la securite et l'architecture.
+  - [.ai/runtime/autofix_loop.md](file:///Users/nolll/Documents/amaswarn/.ai/runtime/autofix_loop.md) : Mecanisme d'auto-reparation declenche en cas d'echec de build ou de test.
+  - [.github/workflows/ai-ci.yml](file:///Users/nolll/Documents/amaswarn/.github/workflows/ai-ci.yml) : Pipeline GitHub Actions orchestrant les guards statiques, les tests et l'audit IA.
+  - [.ai/ci/rules/quality_gates.md](file:///Users/nolll/Documents/amaswarn/.ai/ci/rules/quality_gates.md) : Pare-feu de production infranchissable pour garantir la stabilite du SaaS.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"

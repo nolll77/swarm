@@ -1,0 +1,52 @@
+name: Amaswarn Elite CI Pipeline
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  static-checks:
+    name: Lint & Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - run: npm run lint
+      - run: npm run typecheck
+
+  unit-tests:
+    name: Swarm Integrity Tests
+    needs: static-checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+      - run: npm test
+
+  ai-architect-review:
+    name: AI Architectural Audit
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: AI Audit Loop
+        run: npm run ai:review "Audit PR #${{ github.event.pull_request.number }}"
+
+  self-healing-loop:
+    name: AI Autofix Recovery
+    if: failure()
+    needs: [static-checks, unit-tests, ai-architect-review]
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trigger Autofix
+        run: node .ai/runtime/autofix_loop.js
