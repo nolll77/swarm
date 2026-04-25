@@ -203,6 +203,15 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [.ai/bot/pr_builder.md](file:///Users/nolll/Documents/amaswarn/.ai/bot/pr_builder.md) : Generation de Pull Requests documentees avec résumé d'impact architectural.
   - [.github/workflows/ai-pr-bot.yml](file:///Users/nolll/Documents/amaswarn/.github/workflows/ai-pr-bot.yml) : Workflow GitHub Actions orchestrant le cycle de développement autonome de l'essaim.
 
+## 29. Full Autonomous Dev System (Boucle Fermee Totale)
+- **Proposition :** Mise en place d'un systeme de production capable de gerer le cycle complet Issue -> Triage -> Plan -> Code -> PR -> CI -> Fix -> Merge sans intervention humaine pour les taches a faible risque.
+- **Preuves Code :**
+  - [.ai/autonomy/issue_triadge.md](file:///Users/nolll/Documents/amaswarn/.ai/autonomy/issue_triadge.md) : Triage cognitif et classification des risques pour securiser l'entree du systeme.
+  - [.ai/autonomy/planner.md](file:///Users/nolll/Documents/amaswarn/.ai/autonomy/planner.md) : Cerveau decisionnel concevant la strategie d'implementation avant toute modification de code.
+  - [.ai/autonomy/risk_engine.md](file:///Users/nolll/Documents/amaswarn/.ai/autonomy/risk_engine.md) : Moteur de calcul de risque filtrant les modifications critiques (Billing, Auth) pour interdire l'auto-merge.
+  - [.ai/ci/auto_merge_rules.md](file:///Users/nolll/Documents/amaswarn/.ai/ci/auto_merge_rules.md) : Politique de gouvernance definissant la "Safe Zone" de production pour les fusions autonomes.
+  - [.github/workflows/autonomous-dev.yml](file:///Users/nolll/Documents/amaswarn/.github/workflows/autonomous-dev.yml) : Pipeline souverain orchestrant la totalite de la boucle de développement autonome.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"

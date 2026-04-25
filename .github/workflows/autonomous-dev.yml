@@ -1,0 +1,38 @@
+name: Amaswarn Full Autonomous Dev Loop
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  autonomous-execution:
+    if: !contains(github.event.issue.labels.*.name, 'ai-ignore')
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install
+
+      - name: AI Triage & Risk Scoring
+        run: npm run ai:plan "Triage Issue #${{ github.event.issue.number }}"
+
+      - name: Swarm Planning
+        run: npm run ai:plan "Design Solution for #${{ github.event.issue.number }}"
+
+      - name: Distributed Coding (Swarm)
+        run: npm run ai:code "Execute Task #${{ github.event.issue.number }}"
+
+      - name: Automated CI & Review
+        run: |
+          npm test
+          npm run ai:review "Final PR Audit"
+
+      - name: Self-Healing (if needed)
+        if: failure()
+        run: node .ai/runtime/autofix_loop.js
+
+      - name: Auto-Merge Decision
+        run: node .ai/ci/auto_merge.js
