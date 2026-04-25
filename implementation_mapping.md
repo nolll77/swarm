@@ -147,6 +147,14 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [services/orchestrator/src/lib/swarm-orchestrator.ts](file:///Users/nolll/Documents/amaswarn/services/orchestrator/src/lib/swarm-orchestrator.ts) : Orchestrateur d'essaim orchestrant les agents Planner, Context, Coder et Reviewer via Redis Pub/Sub.
   - [docker-compose.yml](file:///Users/nolll/Documents/amaswarn/docker-compose.yml) : Orchestration locale des 22 microservices simulant l'environnement Kubernetes final.
 
+## 22. AI Operating System (Gouvernance Contextuelle)
+- **Proposition :** Standardisation des interactions IA via un framework de regles, d'agents et de commandes injecte dans le depot.
+- **Preuves Code :**
+  - [.ai/AGENTS.md](file:///Users/nolll/Documents/amaswarn/.ai/AGENTS.md) : Constitution centrale definissant le workflow obligatoire (Plan, Implement, Test, Review).
+  - [.ai/agents/](file:///Users/nolll/Documents/amaswarn/.ai/agents/) : Specialisation des personae (Backend, Frontend) pour une expertise ciblee.
+  - [.ai/rules/](file:///Users/nolll/Documents/amaswarn/.ai/rules/) : Garde-fous techniques (Code, Testing) empechant la derive de qualite.
+  - [.ai/context/project.md](file:///Users/nolll/Documents/amaswarn/.ai/context/project.md) : Memoire structurelle du projet (Stack, Architecture, Conventions) pour une comprehension agentique immediate.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
