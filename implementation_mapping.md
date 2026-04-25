@@ -169,6 +169,14 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [scripts/ai-swarm.ts](file:///Users/nolll/Documents/amaswarn/scripts/ai-swarm.ts) : Moteur local d'orchestration injectant dynamiquement `AGENTS.md` et `project.md` dans le contexte LLM pour une execution certifiee conforme.
   - [package.json](file:///Users/nolll/Documents/amaswarn/package.json) : Point d'entree standardise via `npm run ai:plan`, `npm run ai:code`, `npm run ai:test` et `npm run ai:review`.
 
+## 25. Multi-Agent Autonomous System (Segmentation du Savoir)
+- **Proposition :** Decouplage de l'intelligence via un systeme de 1 module = 1 agent, garantissant l'isolation du contexte et l'absence d'hallucinations globales.
+- **Preuves Code :**
+  - [.ai/agents/registry.md](file:///Users/nolll/Documents/amaswarn/.ai/agents/registry.md) : Inventaire deleguant chaque microservice a un agent autonome specifique.
+  - [.ai/runtime/router.md](file:///Users/nolll/Documents/amaswarn/.ai/runtime/router.md) : Moteur de routage cognitif orientant les taches vers l'agent approprie avec un contexte segmente.
+  - [.ai/runtime/executor.md](file:///Users/nolll/Documents/amaswarn/.ai/runtime/executor.md) : Boucle de contrôle autonome (Plan -> Valid -> Implement -> Test -> Review).
+  - [.ai/index/dependency_graph.md](file:///Users/nolll/Documents/amaswarn/.ai/index/dependency_graph.md) : Cartographie visuelle (Mermaid) des dependances inter-agents pour prevenir les effets de bord architecturaux.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
