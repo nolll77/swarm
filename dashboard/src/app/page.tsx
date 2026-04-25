@@ -1,101 +1,181 @@
-import { Activity, ShieldCheck, Zap, Server, Code, GitPullRequest } from "lucide-react";
+"use client";
+
+import { useEffect, useState } from "react";
+import { Zap, Activity, GitPullRequest, ShieldCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export default function DashboardPage() {
+  const [prs, setPrs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPrs();
+    const interval = setInterval(fetchPrs, 10000); // Auto-refresh every 10s
+    return () => clearInterval(interval);
+  }, []);
+
+  const fetchPrs = async () => {
+    try {
+      const res = await fetch("/api/prs");
+      const data = await res.json();
+      setPrs(Array.isArray(data) ? data : []);
+      setLoading(false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
-    <main className="min-h-screen bg-background text-text-primary">
-      {/* 4.3 SECTION BLOCK & NAVBAR */}
-      <nav className="border-b border-border p-8 py-6 flex items-center justify-between">
+    <main className="min-h-screen bg-bg text-text selection:bg-primary/30">
+      {/* NAVBAR */}
+      <nav className="border-b border-border p-6 flex items-center justify-between backdrop-blur-md sticky top-0 z-50">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <Zap className="text-background w-5 h-5 fill-current" />
-          </div>
-          <span className="text-h3 font-semibold tracking-tight uppercase">Amaswarn</span>
+          <motion.div 
+            initial={{ rotate: -20, scale: 0.8 }}
+            animate={{ rotate: 0, scale: 1 }}
+            className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg shadow-primary/20"
+          >
+            <Zap className="text-bg w-6 h-6 fill-current" />
+          </motion.div>
+          <span className="text-2xl font-bold tracking-tighter uppercase font-mono">Amaswarn</span>
         </div>
-        <div className="flex items-center gap-6 text-small text-text-secondary">
-          <span>REPO: nolll77/swarm</span>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
-            <span>SYSTEM ONLINE</span>
+        
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <div className="flex items-center gap-2 text-subtext">
+            <span className="w-2 h-2 rounded-full bg-success animate-ping" />
+            LIVE SWARM MONITOR
+          </div>
+          <div className="px-4 py-1.5 bg-surface border border-border rounded-full text-xs font-mono">
+            v3.1.0-ELITE
           </div>
         </div>
       </nav>
 
-      <div className="max-w-[1200px] mx-auto p-96 flex flex-col gap-32">
-        {/* 6.2 METRICS ROW */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-24">
-          <MetricCard label="Tasks Completed" value="1,248" subtext="+12% MoM" />
-          <MetricCard label="Active Agents" value="22" subtext="All systems nominal" />
-          <MetricCard label="CI Success Rate" value="99.4%" subtext="Last 30 days" />
-          <MetricCard label="Cost Savings" value="€34,512" subtext="MTD" />
-        </div>
+      <div className="max-w-[1400px] mx-auto p-8 space-y-12">
+        
+        {/* METRICS ROW */}
+        <section className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <MetricCard label="Autonomous Issues Fix" value="1.2k" sub="+4 this hour" icon={<Activity className="w-4 h-4" />} />
+          <MetricCard label="Active Agents" value="22" sub="Full Swarm Sync" icon={<Zap className="w-4 h-4" />} />
+          <MetricCard label="Success Rate" value="99.2%" sub="Verified by AI" icon={<ShieldCheck className="w-4 h-4" />} />
+          <MetricCard label="Productivity Gain" value="€42.5k" sub="+12% ROI" icon={<Zap className="w-4 h-4" />} />
+        </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-32">
-          {/* 6.3 LIVE ACTIVITY PANEL */}
-          <section className="lg:col-span-2 flex flex-col gap-24">
-            <h2 className="text-h2 font-medium">Flux d'activités</h2>
-            <div className="card-premium h-[500px] overflow-auto flex flex-col gap-4 font-mono text-small">
-              <LogEntry time="10:35:01" agent="agent-planner" msg="RCA Analysis initiated for PR #42" type="info" />
-              <LogEntry time="10:34:55" agent="agent-coder" msg="Diff generated for billing-stripe fix" type="info" />
-              <LogEntry time="10:34:48" agent="agent-reviewer" msg="Security check PASSED" type="success" />
-              <LogEntry time="10:34:30" agent="auto-patcher" msg="CVE-2026-1234 detected in shared-pkg" type="danger" />
-              <LogEntry time="10:34:12" agent="multi-cloud" msg="Provisioning resource on Scaleway PAR2" type="info" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* LIVE ACTIVITY PANEL */}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold flex items-center gap-2">
+                <Activity className="text-primary w-5 h-5" /> 
+                Flux d'activité Temps Réel
+              </h2>
             </div>
-          </section>
+            
+            <div className="bg-card border border-border rounded-2xl p-6 h-[500px] overflow-hidden relative shadow-inner">
+               <div className="space-y-4">
+                  <AnimatePresence mode="popLayout">
+                    <ActivityItem key="1" time="Maintenant" agent="orchestrator" msg="Scanning GitHub for new issues..." active />
+                    <ActivityItem key="2" time="Il y a 2m" agent="agent-coder" msg="Patch generated for issue #143" />
+                    <ActivityItem key="3" time="Il y a 5m" agent="agent-reviewer" msg="PR #88 reviewed and approved" />
+                    <ActivityItem key="4" time="Il y a 12m" agent="auto-patcher" msg="Vulnerability fixed in packages/shared" />
+                  </AnimatePresence>
+               </div>
+               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-card to-transparent pointer-events-none" />
+            </div>
+          </div>
 
-          {/* 6.4 AGENTS GRID (Sidebar style) */}
-          <section className="flex flex-col gap-24">
-            <h2 className="text-h2 font-medium">Agents Swarm</h2>
-            <div className="grid grid-cols-1 gap-16">
-              <AgentCard name="Orchestrator" status="running" task="Event Routing" />
-              <AgentCard name="Agent-Coder" status="running" task="Patching core.ts" />
-              <AgentCard name="Agent-Reviewer" status="idle" task="Waiting for diff" />
-              <AgentCard name="SRE-Agent" status="success" task="Last RCA logged" />
+          {/* PR PANEL */}
+          <div className="space-y-6">
+            <h2 className="text-xl font-semibold flex items-center gap-2">
+              <GitPullRequest className="text-accent w-5 h-5" />
+              PRs Autonomes
+            </h2>
+            <div className="flex flex-col gap-4">
+              {loading ? (
+                <div className="p-8 text-center text-subtext animate-pulse">Chargement des flux...</div>
+              ) : prs.length === 0 ? (
+                <div className="card-premium text-center py-12 text-subtext italic">Aucune PR active. Créez une issue !</div>
+              ) : (
+                prs.slice(0, 5).map((pr, i) => (
+                  <motion.div 
+                    key={pr.id}
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <PRCard pr={pr} />
+                  </motion.div>
+                ))
+              )}
             </div>
-          </section>
+          </div>
         </div>
       </div>
     </main>
   );
 }
 
-function MetricCard({ label, value, subtext }: { label: string; value: string; subtext: string }) {
+function MetricCard({ label, value, sub, icon }: any) {
   return (
-    <div className="card-premium flex flex-col gap-8">
-      <span className="text-small text-text-secondary uppercase tracking-wider">{label}</span>
-      <span className="text-h2 font-semibold">{value}</span>
-      <span className="text-small text-success">{subtext}</span>
-    </div>
-  );
-}
-
-function LogEntry({ time, agent, msg, type }: { time: string; agent: string; msg: string; type: 'info' | 'success' | 'danger' }) {
-  const colors = {
-    info: 'text-brand-primary',
-    success: 'text-success',
-    danger: 'text-danger',
-  };
-  return (
-    <div className="border-b border-border/50 pb-2 flex gap-4">
-      <span className="text-text-secondary opacity-50">[{time}]</span>
-      <span className="text-accent">@{agent}</span>
-      <span className={colors[type] || 'text-text-primary'}>{msg}</span>
-    </div>
-  );
-}
-
-function AgentCard({ name, status, task }: { name: string; status: 'running' | 'idle' | 'success'; task: string }) {
-  const statusColors = {
-    running: 'bg-primary',
-    idle: 'bg-text-secondary',
-    success: 'bg-success',
-  };
-  return (
-    <div className="p-4 bg-surface/50 border border-border rounded-lg flex items-center justify-between">
-      <div className="flex flex-col">
-        <span className="font-medium text-primary text-small">{name}</span>
-        <span className="text-[12px] text-text-secondary">{task}</span>
+    <motion.div 
+      whileHover={{ y: -5 }}
+      className="bg-card border border-border rounded-2xl p-6 shadow-xl hover:shadow-primary/5 transition-all duration-300"
+    >
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-xs font-bold text-subtext uppercase tracking-widest">{label}</span>
+        <div className="p-2 bg-surface rounded-lg text-primary">{icon}</div>
       </div>
-      <div className={`w-2 h-2 rounded-full ${statusColors[status] || 'bg-text-secondary'}`} />
+      <div className="text-4xl font-bold tracking-tighter mb-1">{value}</div>
+      <div className="text-xs text-success font-medium flex items-center gap-1">
+        <Zap className="w-3 h-3 fill-current" /> {sub}
+      </div>
+    </motion.div>
+  );
+}
+
+function ActivityItem({ time, agent, msg, active }: any) {
+  return (
+    <motion.div 
+      layout
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      className={cn(
+        "flex gap-4 p-4 rounded-xl border border-transparent transition-all",
+        active ? "bg-primary/5 border-primary/20 shadow-lg shadow-primary/5" : "hover:bg-surface/50"
+      )}
+    >
+      <div className={cn(
+        "w-2 h-2 mt-2 rounded-full",
+        active ? "bg-primary animate-pulse" : "bg-border"
+      )} />
+      <div className="flex-1">
+        <div className="flex items-center justify-between mb-1">
+          <span className="text-xs font-mono text-accent uppercase tracking-tighter">@{agent}</span>
+          <span className="text-[10px] text-subtext opacity-50 uppercase">{time}</span>
+        </div>
+        <p className={cn("text-sm", active ? "text-text" : "text-subtext")}>{msg}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+function PRCard({ pr }: any) {
+  return (
+    <div className="bg-card border border-border rounded-xl p-4 hover:border-accent/50 transition-colors group">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-start justify-between">
+          <span className="text-xs font-mono text-subtext">#{pr.number}</span>
+          <div className="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded text-[10px] font-bold uppercase">
+            {pr.state}
+          </div>
+        </div>
+        <h4 className="text-sm font-semibold group-hover:text-accent transition-colors line-clamp-1">{pr.title}</h4>
+        <div className="flex items-center justify-between text-[11px] text-subtext">
+          <span>{pr.user.login}</span>
+          <span>{new Date(pr.created_at).toLocaleDateString()}</span>
+        </div>
+      </div>
     </div>
   );
 }

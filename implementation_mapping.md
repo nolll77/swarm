@@ -131,6 +131,14 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [dashboard/src/app/page.tsx](file:///Users/nolll/Documents/amaswarn/dashboard/src/app/page.tsx) : Implementation de la Page 05 (Dashboard UI) utilisant les composants d'Auto Layout (MetricCards, AgentCards, Live Activity) avec l'esthetique "Stripe/Linear".
   - [dashboard/src/app/layout.tsx](file:///Users/nolll/Documents/amaswarn/dashboard/src/app/layout.tsx) : Structure Next.js 14 (App Router) garantissant une performance d'affichage Elite.
 
+## 20. Boucle Autonome Finale (GitHub Viral Demo)
+- **Proposition :** Execution end-to-end d'une reparation : Issue Github -> Patch IA -> Pull Request.
+- **Preuves Code :**
+  - [dashboard/src/lib/autonomous-loop.ts](file:///Users/nolll/Documents/amaswarn/dashboard/src/lib/autonomous-loop.ts) : Moteur d'intelligence asynchrone gerant le cycle de vie de la reparation (Planning, Generation OpenAI, Push Git).
+  - [dashboard/src/app/api/webhook/route.ts](file:///Users/nolll/Documents/amaswarn/dashboard/src/app/api/webhook/route.ts) : Point d'entree evenementiel declenchant la boucle des l'ouverture d'un ticket GitHub.
+  - [dashboard/src/app/page.tsx](file:///Users/nolll/Documents/amaswarn/dashboard/src/app/page.tsx) : Dashboard interactif anime avec **Framer Motion**, trackant en temps reel les PRs generees par l'essaim.
+  - [dashboard/src/app/api/prs/route.ts](file:///Users/nolll/Documents/amaswarn/dashboard/src/app/api/prs/route.ts) : Proxy API securise vers GitHub pour le monitoring live.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
