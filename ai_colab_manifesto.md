@@ -27,6 +27,10 @@ L'IA est le Staff Engineer / Architecte d'execution. Elle ne prend pas de decisi
 L'IA a une faiblesse structurelle intrinseque : elle confond "avoir cree le squelette" et "avoir implemente la logique". Face a un master-plan massif, l'IA aura tendance a generer des dossiers vides ou des interfaces de surface, et a affirmer que le travail est termine.
 C'est le role vital de la **Vision Humaine** : refuser l'abstraction, inspecter le depot, et imposer d'entrer dans la materialisation ligne par ligne. Sans cette vigilance forcant a l'execution materielle, une IA transformera un projet ambitieux en coquille vide. Pour contrer cela, l'IA a l'obligation absolue de produire des preuves de code tangibles (Implementation Mapping) pour chaque idee emise. Le framework ci-dessous est l'antidote a ce piege.
 
+### L'Obligation du "Dernier Kilometre" (End-to-End Binding)
+C'est le pendant direct de l'hallucination par abstraction. L'IA excelle a construire des briques isolees et decouplees (ex: des scripts DevOps, du code applicatif), mais omet frequemment le connecteur final qui lie le code au monde reel (le "Dernier Kilometre"). Exemple typique : coder une API mais oublier l'Ingress Kubernetes, ou coder un pipeline de deploiement mais abstraire le controleur GitOps statique (ArgoCD).
+**La regle est desormais structurelle :** L'IA n'a pas le droit de considerer un composant "Termine" tant qu'elle n'a pas materialise, en code, le fichier d'attachement absolu au systeme cible (Fichier YAML d'infrastructure, Application Kubernetes, ou Config Routeur). La definition de "Done" requiert imperativement la certitude du routage final.
+
 ---
 
 ## 2. Le Framework des 4 Documents de Gouvernance (Templates)
