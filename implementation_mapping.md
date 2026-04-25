@@ -155,6 +155,14 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [.ai/rules/](file:///Users/nolll/Documents/amaswarn/.ai/rules/) : Garde-fous techniques (Code, Testing) empechant la derive de qualite.
   - [.ai/context/project.md](file:///Users/nolll/Documents/amaswarn/.ai/context/project.md) : Memoire structurelle du projet (Stack, Architecture, Conventions) pour une comprehension agentique immediate.
 
+## 23. AI OS Scale (Gestion du Contexte 100k+ LOC)
+- **Proposition :** Mise en place d'un systeme de "Context Splitting" pour gerer l'echelle monolithique ou distribuée sans hallucinations.
+- **Preuves Code :**
+  - [.ai/index/codebase_map.md](file:///Users/nolll/Documents/amaswarn/.ai/index/codebase_map.md) : Cartographie exhaustive des 22 microservices et de leurs inter-dependances.
+  - [.ai/context/architecture/overview.md](file:///Users/nolll/Documents/amaswarn/.ai/context/architecture/overview.md) : Vision macroscopique du systeme (Gateway, Orchestration, Execution) pour guider les decisions de conception.
+  - [.ai/agents/backend-scale.md](file:///Users/nolll/Documents/amaswarn/.ai/agents/backend-scale.md) : Agent specialise dans la modification chirurgicale de gros depots, interdisant le couplage fort.
+  - [.ai/rules/architecture.md](file:///Users/nolll/Documents/amaswarn/.ai/rules/architecture.md) : Regles de pare-feu architectural imposant l'event-driven et l'isolation des bases de donnees.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
