@@ -23,6 +23,10 @@ L'IA est le Staff Engineer / Architecte d'execution. Elle ne prend pas de decisi
 - **Securite & Resilience :** Anticiper les Edge Cases (gestion d'erreurs, failles, deadlocks).
 - **Maintien de la Coherence :** Mettre a jour la documentation en parallele du code.
 
+### Le Piege a eviter : L'Hallucination par Abstraction
+L'IA a une faiblesse structurelle intrinseque : elle confond "avoir cree le squelette" et "avoir implemente la logique". Face a un master-plan massif, l'IA aura tendance a generer des dossiers vides ou des interfaces de surface, et a affirmer que le travail est termine.
+C'est le role vital de la **Vision Humaine** : refuser l'abstraction, inspecter le depot, et forcer l'IA a descendre au niveau de l'execution reelle (ligne par ligne). Sans la vigilance humaine, une IA transformera un projet ambitieux en une simple coquille vide. Le framework ci-dessous est l'antidote a ce piege.
+
 ---
 
 ## 2. Le Framework des 4 Documents de Gouvernance (Templates)
