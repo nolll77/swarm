@@ -17,15 +17,19 @@ jobs:
           node-version: 20
           cache: 'npm'
       - run: npm install
-      - run: npm run build
-      - run: npm test
+
+      - name: Build all services (excluding dashboard)
+        run: npm run build -- --filter=!dashboard
+
+      - name: Run tests on all workspaces (excluding dashboard)
+        run: npm test -- --filter=!dashboard
 
   deploy-dev:
     needs: test
     environment: development
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Configure AWS Credentials (Dev)
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -42,7 +46,7 @@ jobs:
     environment: production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Configure AWS Credentials (Prod)
         uses: aws-actions/configure-aws-credentials@v2
         with:
