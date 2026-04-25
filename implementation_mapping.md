@@ -212,6 +212,13 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [.ai/ci/auto_merge_rules.md](file:///Users/nolll/Documents/amaswarn/.ai/ci/auto_merge_rules.md) : Politique de gouvernance definissant la "Safe Zone" de production pour les fusions autonomes.
   - [.github/workflows/autonomous-dev.yml](file:///Users/nolll/Documents/amaswarn/.github/workflows/autonomous-dev.yml) : Pipeline souverain orchestrant la totalite de la boucle de développement autonome.
 
+## 30. Strategic B2B SaaS (Vision & Monetisation)
+- **Proposition :** Transformation d'un systeme d'agents en une plateforme commerciale vendable avec proposition de valeur, fosses defensifs (moats) et economie de l'unité.
+- **Preuves Strategiques :**
+  - [docs/pitch_deck_notion.md](file:///Users/nolll/Documents/amaswarn/docs/pitch_deck_notion.md) : Support de vente haut de gamme avec positionnement "Engineering Intelligence Platform".
+  - [docs/business_model_unit_economics.md](file:///Users/nolll/Documents/amaswarn/docs/business_model_unit_economics.md) : Analyse de la rentabilité, du tiering SaaS et de la Flywheel de croissance.
+  - [docs/moat_differentiation_audit.md](file:///Users/nolll/Documents/amaswarn/docs/moat_differentiation_audit.md) : Audit des barrieres a l'entree face aux geants (Copilot) et aux nouveaux entrants (Devin).
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
