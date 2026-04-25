@@ -50,6 +50,7 @@
   - [turbo.json](./turbo.json): Centralized pipeline for test, lint, and typecheck.
   - [package.json](./package.json): Added missing ts-node/typescript dependencies and unified scripts.
   - [.github/workflows/deploy.yml](./.github/workflows/deploy.yml): Migrated to Node 20 and Turbo-driven testing.
+  - [.github/workflows/autonomous-dev.yml](./.github/workflows/autonomous-dev.yml): Added safety checks for event context to prevent push failures.
   - [packages/database/package.json](./packages/database/package.json): Automated prisma generate during the build step.
 
 ---

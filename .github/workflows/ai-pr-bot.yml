@@ -6,7 +6,7 @@ on:
 
 jobs:
   swarm-dev:
-    if: contains(github.event.issue.labels.*.name, 'ai-request')
+    if: github.event.issue && contains(github.event.issue.labels.*.name, 'ai-request')
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
