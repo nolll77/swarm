@@ -177,6 +177,15 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [.ai/runtime/executor.md](file:///Users/nolll/Documents/amaswarn/.ai/runtime/executor.md) : Boucle de contrôle autonome (Plan -> Valid -> Implement -> Test -> Review).
   - [.ai/index/dependency_graph.md](file:///Users/nolll/Documents/amaswarn/.ai/index/dependency_graph.md) : Cartographie visuelle (Mermaid) des dependances inter-agents pour prevenir les effets de bord architecturaux.
 
+## 26. SaaS Monorepo Scale (Coordination Globale)
+- **Proposition :** Mise en place d'une infrastructure de commandement pour gerer un ecosysteme de 10+ agents synchronises sur un modele SaaS multi-tenant.
+- **Preuves Code :**
+  - [.ai/core/orchestrator.md](file:///Users/nolll/Documents/amaswarn/.ai/core/orchestrator.md) : Instance souveraine de coordination gerant les conflits et la coherence globale de l'essaim.
+  - [.ai/runtime/sync_engine.md](file:///Users/nolll/Documents/amaswarn/.ai/runtime/sync_engine.md) : Moteur de synchronisation validant les contrats API et les schemas d'evenements inter-agents.
+  - [.ai/index/service_contracts.md](file:///Users/nolll/Documents/amaswarn/.ai/index/service_contracts.md) : Manifeste des engagements API entre microservices pour garantir la stabilite du Swarm.
+  - [.ai/index/event_map.md](file:///Users/nolll/Documents/amaswarn/.ai/index/event_map.md) : Cartographie reactive liant les producteurs et consommateurs d'evenements au sein du bus.
+  - [.ai/ci/ai-review-rules.md](file:///Users/nolll/Documents/amaswarn/.ai/ci/ai-review-rules.md) : Regles de filtrage automatees imposant les standards SOC2/RGPD lors des revues de code.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
