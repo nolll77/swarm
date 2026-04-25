@@ -163,6 +163,12 @@ Ce document fait le pont exact entre les propositions théoriques de la discussi
   - [.ai/agents/backend-scale.md](file:///Users/nolll/Documents/amaswarn/.ai/agents/backend-scale.md) : Agent specialise dans la modification chirurgicale de gros depots, interdisant le couplage fort.
   - [.ai/rules/architecture.md](file:///Users/nolll/Documents/amaswarn/.ai/rules/architecture.md) : Regles de pare-feu architectural imposant l'event-driven et l'isolation des bases de donnees.
 
+## 24. AI Swarm CLI (Automatisation Transparent vs Blackbox)
+- **Proposition :** Remplacer le besoin d'un outil propriétaire (AIDD) par une série de scripts locaux utilisant les règles et les personae du dépôt.
+- **Preuves Code :**
+  - [scripts/ai-swarm.ts](file:///Users/nolll/Documents/amaswarn/scripts/ai-swarm.ts) : Moteur local d'orchestration injectant dynamiquement `AGENTS.md` et `project.md` dans le contexte LLM pour une execution certifiee conforme.
+  - [package.json](file:///Users/nolll/Documents/amaswarn/package.json) : Point d'entree standardise via `npm run ai:plan`, `npm run ai:code`, `npm run ai:test` et `npm run ai:review`.
+
 ---
 
 ## Conclusion Finale : La vision "100M ARR"
