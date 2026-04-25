@@ -5,6 +5,9 @@
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc",
+    "test": "echo 'No tests yet'",
+    "lint": "echo 'No linting yet'",
+    "typecheck": "tsc --noEmit",
     "dev": "tsc --watch"
   },
   "devDependencies": {

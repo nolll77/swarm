@@ -11,6 +11,7 @@ Each microservice/module in the Amaswarn ecosystem is owned by a specialized Aut
 | services/agent-reviewer       | reviewer-agent          | Security, Quality Gates            |
 | services/rbac-controller       | rbac-agent              | Multi-tenancy, Permissions         |
 | services/multi-cloud-controller| multicloud-agent        | Terraform, Cloud Abstraction       |
+| services/agent-gdpr          | gdpr-agent              | GDPR, Privacy, Compliance          |
 
 ---
 

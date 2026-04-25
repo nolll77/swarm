@@ -36,12 +36,17 @@
     "ai:test": "ts-node scripts/ai-swarm.ts TEST",
     "ai:review": "ts-node scripts/ai-swarm.ts REVIEW",
     "build": "turbo run build",
+    "test": "turbo run test --parallel",
+    "lint": "turbo run lint --parallel",
+    "typecheck": "turbo run typecheck --parallel",
     "db:generate": "npm run db:generate --workspace=@ai-dev/database",
     "db:migrate": "npm run db:migrate --workspace=@ai-dev/database",
     "db:seed": "npm run db:seed --workspace=@ai-dev/database",
     "bootstrap": "bash scripts/bootstrap.sh"
   },
   "devDependencies": {
-    "turbo": "^1.10.0"
+    "turbo": "^1.10.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.1.6"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "@ai-dev/agent-gdpr",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "dependencies": {
+    "@ai-dev/events": "workspace:*",
+    "@ai-dev/logger": "workspace:*",
+    "@ai-dev/shared": "workspace:*",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "ts-node-dev": "^2.0.0"
+  }
+}
