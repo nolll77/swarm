@@ -1,0 +1,354 @@
+version: "3.8"
+
+services:
+  # --- Infrastructure ---
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ai_dev_saas
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+  # --- API Layer ---
+  api-gateway:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/api-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - GITHUB_WEBHOOK_SECRET=${GITHUB_WEBHOOK_SECRET}
+    depends_on:
+      - redis
+      - db
+
+  # --- Core Pipeline ---
+  task-router:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/task-router
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+      - db
+
+  orchestrator:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/orchestrator
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+      - db
+
+  # --- AI Agents ---
+  agent-planner:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/agent-planner
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - redis
+      - db
+
+  agent-coder:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/agent-coder
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - redis
+      - db
+
+  agent-reviewer:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/agent-reviewer
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - redis
+      - db
+
+  agent-ui:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/agent-ui
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - redis
+      - db
+
+  # --- Delivery ---
+  pr-service:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/pr-service
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+    depends_on:
+      - redis
+      - db
+
+  ci-monitor:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/ci-monitor
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+      - db
+
+  # --- Support ---
+  notification:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/notification
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+    depends_on:
+      - redis
+
+  metrics-collector:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/metrics-collector
+    ports:
+      - "9090:9090"
+    environment:
+      - METRICS_PORT=9090
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+      - db
+
+  billing-stripe:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/billing-stripe
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+    depends_on:
+      - redis
+      - db
+
+  agent-sre:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/agent-sre
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - redis
+      - db
+
+  soc2-collector:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/soc2-collector
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - AWS_REGION=${AWS_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - EVIDENCE_S3_BUCKET=${EVIDENCE_S3_BUCKET}
+      - EVIDENCE_RUN_NOW=${EVIDENCE_RUN_NOW:-false}
+    depends_on:
+      - db
+
+  vector-memory:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/vector-memory
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - redis
+      - db
+
+  chaos-agent:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/chaos-agent
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - CHAOS_RUN_NOW=${CHAOS_RUN_NOW:-false}
+      - CHAOS_EXPERIMENT_TYPE=${CHAOS_EXPERIMENT_TYPE:-}
+      - CHAOS_CRON=${CHAOS_CRON:-0 3 * * 0}
+    depends_on:
+      - redis
+      - db
+
+  agent-evolve:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/agent-evolve
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - EVOLVE_RUN_NOW=${EVOLVE_RUN_NOW:-false}
+      - EVOLVE_AUTO_APPLY=${EVOLVE_AUTO_APPLY:-false}
+      - EVOLVE_ANALYSIS_DAYS=${EVOLVE_ANALYSIS_DAYS:-30}
+      - EVOLVE_CRON=${EVOLVE_CRON:-0 4 * * 1}
+    depends_on:
+      - redis
+      - db
+
+  secret-vault:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/secret-vault
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      # Provider selection: 'aws' (prod), 'hashicorp' (on-prem), 'env' (local dev only)
+      - VAULT_PROVIDER=${VAULT_PROVIDER:-env}
+      # AWS Secrets Manager
+      - AWS_REGION=${AWS_REGION:-eu-west-1}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      # HashiCorp Vault (alternative)
+      - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
+      - VAULT_TOKEN=${VAULT_TOKEN}
+      # Rotation schedule (daily 05:00 UTC)
+      - VAULT_ROTATION_CRON=${VAULT_ROTATION_CRON:-0 5 * * *}
+    depends_on:
+      - redis
+      - db
+
+  canary-controller:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/canary-controller
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+      - db
+
+  rbac-controller:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/rbac-controller
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+      - db
+
+  auto-patcher:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/auto-patcher
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - PATCHER_CRON=0 2 * * *
+    depends_on:
+      - redis
+      - db
+
+  multi-cloud-controller:
+    build:
+      context: .
+      dockerfile: infra/docker/service.Dockerfile
+      args:
+        SERVICE: services/multi-cloud-controller
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/ai_dev_saas
+      - REDIS_URL=redis://redis:6379
+      - CLOUD_PROVIDER=aws
+    depends_on:
+      - redis
+      - db
+
+volumes:
+  redis-data:
+  pg-data:

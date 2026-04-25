@@ -1,0 +1,47 @@
+agents:
+  planner:
+    model: "gpt-4o"
+    temperature: 0
+    max_tokens: 4096
+    allowed_actions:
+      - analyze_issue
+      - generate_plan
+    forbidden_actions:
+      - modify_code
+      - create_pr
+
+  coder:
+    model: "gpt-4o"
+    temperature: 0
+    max_tokens: 8192
+    allowed_actions:
+      - read_plan
+      - generate_diff
+      - read_review_feedback
+    forbidden_actions:
+      - create_pr
+      - merge_pr
+      - modify_ci
+
+  reviewer:
+    model: "gpt-4o"
+    temperature: 0
+    max_tokens: 4096
+    allowed_actions:
+      - read_diff
+      - read_plan
+      - evaluate_code
+    forbidden_actions:
+      - modify_code
+      - create_pr
+
+rate_limits:
+  starter:
+    tasks_per_hour: 5
+    cost_per_month_cents: 10000
+  team:
+    tasks_per_hour: 20
+    cost_per_month_cents: 50000
+  enterprise:
+    tasks_per_hour: 100
+    cost_per_month_cents: 500000

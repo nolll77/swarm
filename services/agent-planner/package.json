@@ -1,0 +1,22 @@
+{
+  "name": "@ai-dev/agent-planner",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "openai": "^4.0.0",
+    "dotenv": "^16.3.1",
+    "@ai-dev/shared": "*",
+    "@ai-dev/database": "*",
+    "@ai-dev/events": "*",
+    "@ai-dev/logger": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.6"
+  }
+}

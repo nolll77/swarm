@@ -1,0 +1,43 @@
+{
+  "name": "ai-dev-platform",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "dashboard"
+  ],
+  "scripts": {
+    "dev:gateway": "npm run dev --workspace=@ai-dev/api-gateway",
+    "dev:router": "npm run dev --workspace=@ai-dev/task-router",
+    "dev:orchestrator": "npm run dev --workspace=@ai-dev/orchestrator",
+    "dev:planner": "npm run dev --workspace=@ai-dev/agent-planner",
+    "dev:coder": "npm run dev --workspace=@ai-dev/agent-coder",
+    "dev:reviewer": "npm run dev --workspace=@ai-dev/agent-reviewer",
+    "dev:pr": "npm run dev --workspace=@ai-dev/pr-service",
+    "dev:ci": "npm run dev --workspace=@ai-dev/ci-monitor",
+    "dev:notify": "npm run dev --workspace=@ai-dev/notification",
+    "dev:metrics": "npm run dev --workspace=@ai-dev/metrics-collector",
+    "dev:sre": "npm run dev --workspace=@ai-dev/agent-sre",
+    "dev:billing": "npm run dev --workspace=@ai-dev/billing-stripe",
+    "dev:ui": "npm run dev --workspace=@ai-dev/agent-ui",
+    "dev:soc2": "npm run dev --workspace=@ai-dev/soc2-collector",
+    "dev:vector": "npm run dev --workspace=@ai-dev/vector-memory",
+    "dev:chaos": "npm run dev --workspace=@ai-dev/chaos-agent",
+    "dev:evolve": "npm run dev --workspace=@ai-dev/agent-evolve",
+    "dev:vault": "npm run dev --workspace=@ai-dev/secret-vault",
+    "dev:canary": "npm run dev --workspace=@ai-dev/canary-controller",
+    "dev:rbac": "npm run dev --workspace=@ai-dev/rbac-controller",
+    "dev:patcher": "npm run dev --workspace=@ai-dev/auto-patcher",
+    "dev:multicloud": "npm run dev --workspace=@ai-dev/multi-cloud-controller",
+    "dev:dashboard": "npm run dev --workspace=dashboard",
+    "build": "turbo run build",
+    "db:generate": "npm run db:generate --workspace=@ai-dev/database",
+    "db:migrate": "npm run db:migrate --workspace=@ai-dev/database",
+    "db:seed": "npm run db:seed --workspace=@ai-dev/database",
+    "bootstrap": "bash scripts/bootstrap.sh"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.0"
+  }
+}

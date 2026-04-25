@@ -1,0 +1,196 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- Multi-Tenant Core ---
+
+model Tenant {
+  id                    String   @id @default(uuid())
+  name                  String
+  plan                  String   @default("starter")
+  githubInstallationId  String   @unique
+  autonomyLevel         String   @default("assisted")
+  maxRetriesPerTask     Int      @default(3)
+  allowedModules        String[] @default([])
+  blockedModules        String[] @default([])
+  monthlyBudgetCents    Int      @default(50000)
+  spentCents            Int      @default(0)
+  stripeCustomerId      String?  @unique
+  stripeSubscriptionId  String?  @unique
+  billingStatus         String   @default("active")
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  repositories Repository[]
+  tasks        Task[]
+  executions   Execution[]
+  pullRequests PullRequest[]
+  auditLogs    AuditLog[]
+  metrics      Metric[]
+  apiKeys      ApiKey[]
+
+  @@map("tenants")
+}
+
+model ApiKey {
+  id        String   @id @default(uuid())
+  tenantId  String
+  key       String   @unique
+  name      String
+  isActive  Boolean  @default(true)
+  lastUsed  DateTime?
+  createdAt DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+
+  @@map("api_keys")
+}
+
+// --- Repository ---
+
+model Repository {
+  id            String   @id @default(uuid())
+  tenantId      String
+  fullName      String
+  defaultBranch String   @default("main")
+  language      String   @default("")
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tenant       Tenant        @relation(fields: [tenantId], references: [id])
+  tasks        Task[]
+  pullRequests PullRequest[]
+
+  @@unique([tenantId, fullName])
+  @@map("repositories")
+}
+
+// --- Task Pipeline ---
+
+model Task {
+  id               String   @id @default(uuid())
+  tenantId         String
+  repositoryId     String
+  issueNumber      Int
+  title            String
+  body             String   @default("")
+  type             String   @default("feature")
+  riskLevel        String   @default("low")
+  status           String   @default("pending")
+  currentIteration Int      @default(0)
+  maxIterations    Int      @default(3)
+  metadata         Json     @default("{}")
+  errorMessage     String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  tenant       Tenant        @relation(fields: [tenantId], references: [id])
+  repository   Repository    @relation(fields: [repositoryId], references: [id])
+  executions   Execution[]
+  pullRequests PullRequest[]
+  auditLogs    AuditLog[]
+
+  @@index([tenantId, status])
+  @@index([tenantId, createdAt])
+  @@map("tasks")
+}
+
+model Execution {
+  id           String   @id @default(uuid())
+  taskId       String
+  tenantId     String
+  step         String
+  status       String   @default("running")
+  input        Json     @default("{}")
+  output       Json     @default("{}")
+  durationMs   Int      @default(0)
+  costCents    Int      @default(0)
+  errorMessage String?
+  createdAt    DateTime @default(now())
+
+  task   Task   @relation(fields: [taskId], references: [id])
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+
+  @@index([taskId])
+  @@index([tenantId, createdAt])
+  @@map("executions")
+}
+
+// --- Pull Requests ---
+
+model PullRequest {
+  id             String    @id @default(uuid())
+  taskId         String
+  tenantId       String
+  repositoryId   String
+  githubPrNumber Int
+  branchName     String
+  title          String
+  status         String    @default("open")
+  url            String
+  iterations     Int       @default(1)
+  createdAt      DateTime  @default(now())
+  mergedAt       DateTime?
+
+  task       Task       @relation(fields: [taskId], references: [id])
+  tenant     Tenant     @relation(fields: [tenantId], references: [id])
+  repository Repository @relation(fields: [repositoryId], references: [id])
+
+  @@index([tenantId, status])
+  @@map("pull_requests")
+}
+
+// --- Audit & Observability ---
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  tenantId  String
+  taskId    String?
+  action    String
+  actor     String   @default("system")
+  details   Json     @default("{}")
+  timestamp DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+  task   Task?  @relation(fields: [taskId], references: [id])
+
+  @@index([tenantId, timestamp])
+  @@map("audit_logs")
+}
+
+model Metric {
+  id        String   @id @default(uuid())
+  tenantId  String
+  name      String
+  value     Float
+  tags      Json     @default("{}")
+  timestamp DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+
+  @@index([tenantId, name, timestamp])
+  @@map("metrics")
+}
+
+// --- SOC2 / Compliance ---
+
+model EvidenceReport {
+  id              String   @id @default(uuid())
+  tenantId        String?  // null = platform-wide report
+  period          String   // e.g. "2024-04" (YYYY-MM)
+  reportType      String   @default("soc2_type2")  // soc2_type2, iso27001, gdpr
+  status          String   @default("generating")   // generating, ready, failed
+  s3Key           String?                            // object path in S3
+  auditLogCount   Int      @default(0)
+  taskCount       Int      @default(0)
+  generatedAt     DateTime @default(now())
+
+  @@index([tenantId, period])
+  @@map("evidence_reports")
+}

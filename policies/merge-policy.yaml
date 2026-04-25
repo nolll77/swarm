@@ -1,0 +1,33 @@
+merge_policy:
+  auto_merge:
+    enabled: false
+    conditions:
+      - ci_passed: true
+      - ai_review_passed: true
+      - risk_level: "low"
+      - single_module_only: true
+      - no_api_changes: true
+      - test_coverage_not_decreased: true
+
+  blocked_auto_merge:
+    - auth_module_touched
+    - billing_module_touched
+    - database_schema_changed
+    - external_api_contract_changed
+    - security_review_required
+
+  require_human_approval:
+    - risk_level: "high"
+    - risk_level: "critical"
+    - multi_module_changes: true
+
+branch_strategy:
+  prefix: "ai/"
+  naming: "fix-{issue_number}-{sanitized_title}"
+  max_length: 60
+
+pr_template:
+  title: "[AI] #{issue_number}: {title}"
+  include_plan: true
+  include_review_feedback: true
+  include_iteration_count: true

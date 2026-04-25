@@ -1,0 +1,34 @@
+risk_classification:
+  high_risk_modules:
+    - auth
+    - billing
+    - payment
+    - security
+    - infra
+    - migration
+
+  medium_risk_modules:
+    - api
+    - database
+    - schema
+
+  auto_reject_keywords:
+    - "delete all"
+    - "drop database"
+    - "rm -rf"
+    - "force push"
+    - "disable auth"
+
+risk_escalation:
+  high:
+    require_human_approval: true
+    notify_channel: "slack"
+    max_auto_fix_iterations: 1
+
+  medium:
+    require_human_approval: false
+    max_auto_fix_iterations: 2
+
+  low:
+    require_human_approval: false
+    max_auto_fix_iterations: 3

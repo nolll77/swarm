@@ -1,0 +1,120 @@
+# AI-HUMAN COLLABORATION MANIFESTO
+**Le Blueprint pour construire des architectures SaaS a l'echelle industrielle via l'IA.**
+
+Ce document formalise la dynamique de travail qui a permis de scaler une architecture de 0 a 19 microservices (Niveau "100M ARR") en un temps record. Il sert de ligne directrice pour toute future collaboration entre l'architecte humain et l'agent IA.
+
+---
+
+## 1. La Dynamique de Collaboration (Le Contrat)
+
+Le succes repose sur une separation stricte des responsabilites. Le chevauchement cree le chaos ; la separation cree la velocite.
+
+### Le Role de l'Humain : La Vision (Le "Quoi" et le "Pourquoi")
+L'intelligence humaine est allouee a la strategie, pas a l'execution de la syntaxe.
+- **Direction Produit :** Definir la cible de marche (ex: "Je veux du niveau Datadog").
+- **Exigences Non-Fonctionnelles :** Imposer les standards (ex: "Zero tolerance pour les secrets en clair", "Deploiement sans coupure").
+- **Gouvernance :** Valider les implementations et s'assurer qu'elles respectent le "Big Picture".
+- **Identite :** Brand, UX, culture (ex: "Vibe Amaterasu").
+
+### Le Role de l'IA : La Technique (Le "Comment")
+L'IA est le Staff Engineer / Architecte d'execution. Elle ne prend pas de decisions business, mais elle est souveraine sur la technique.
+- **Conception Architecturale :** Traduire le besoin en patterns stricts (Event Bus, SRP, Interfaces).
+- **Code Generation :** Ecrire, typer et tester le code (TypeScript, Docker, IaC).
+- **Securite & Resilience :** Anticiper les Edge Cases (gestion d'erreurs, failles, deadlocks).
+- **Maintien de la Coherence :** Mettre a jour la documentation en parallele du code.
+
+---
+
+## 2. Le Framework des 4 Documents de Gouvernance (Templates)
+
+Pour qu'un projet IA ne se transforme pas en "code spaghetti", la progression doit etre ancree dans 4 documents immuables. Ils garantissent que l'IA ne perd jamais son contexte et que l'Humain sait exactement ce qui a ete fait.
+
+### Doc 1 : roadmap_expansion.md (Le Plan Strategique)
+**But :** Suivre l'integrite de l'architecture et l'avancement macroscopique.
+**Quand le mettre a jour :** A chaque fois qu'un module ou un microservice est termine.
+
+```markdown
+# [Nom du Projet] - Master Roadmap
+
+## Objectifs Strategiques Restants
+- [ ] Fonctionnalite A (ex: RBAC Granulaire)
+- [ ] Fonctionnalite B (ex: Patching Autonome)
+
+## Detail de l'Architecture Implementee (Module par module)
+### [Numero] [Nom du Module]
+**Status: 100% Implemente | Service: services/nom-du-service/**
+- Resume de haut niveau du role du service.
+- **Fichier A (index.ts)** : Que fait-il ?
+- **Fichier B (engine.ts)** : Que fait-il ?
+
+## Resultat Final : Inventaire des Microservices (La Big Picture)
+| # | Service | Role Strategique |
+|---|---|---|
+| 1 | api-gateway | Point d'entree |
+...
+```
+
+### Doc 2 : implementation_mapping.md (La Preuve d'Audit)
+**But :** Relier neurologiquement "Ce qui a ete demande" a "Ce qui a ete code". C'est l'auditabilite extreme.
+**Quand le mettre a jour :** En meme temps que la feature est poussee, avec des liens relatifs precis.
+
+```markdown
+# Mapping Vision -> Implementation Code
+
+## [Numero]. [Nom du Sujet]
+- **Proposition :** [Ce que l'humain a demande, ex: "Zero secret en clair"]
+- **Preuves Code :**
+  - [chemin/vers/fichier.ts](./chemin/vers/fichier.ts) : Explication d'une ligne sur POURQUOI ce fichier repond a la proposition (ex: "Cache TTL 5min pour optimiser les appels AWS").
+  - [chemin/vers/autre.ts](./chemin/vers/autre.ts) : Explication de la mecanique.
+
+---
+## Conclusion sur l'etat de l'art
+[Resume pour rappeler a l'IA/Humain le niveau de maturite atteint].
+```
+
+### Doc 3 : propositions_catalogue.md (L'Historique des Decisions)
+**But :** Tracer *pourquoi* une decision a ete prise. Souvent, la logique derriere une archi se perd en 2 semaines.
+**Quand le mettre a jour :** Lorsqu'un choix entre plusieurs options architecturales ou produit est fait.
+
+```markdown
+# Historique des Propositions & Decisions
+
+## Proposition [X] — [Theme]
+**Question initiale :** "[La demande brute de l'humain]"
+**Option choisie :** [La solution retenue parmi les options]
+**Ce que ca apporte :** [L'impact metier, la Vibe, la justification (ex: "Atteindre la compliance SOC2")]
+
+## Resume de la progression temporelle
+| Phase | Ce qui a ete construit | La logique derriere |
+|---|---|---|
+| Phase X | [Sujet] | [Detail] |
+```
+
+### Doc 4 : walkthrough.md (Le "Show & Tell")
+**But :** Permet a l'humain (ou a un nouvel ingenieur/investisseur) de comprendre l'UX, le flow et "comment ca marche visuellement" ou via l'API, sans lire le code source.
+**Quand le mettre a jour :** Pour faire une "Demonstration" finale d'une Feature Epique achevee.
+
+```markdown
+# Walkthrough : Comment tester / Flow Utilisateur
+
+> [!TIP]
+> Comment lancer ce module : npm run dev:service
+
+## Architecture Flow : [Nom de la feature]
+[Explication narrative de ce qui se passe sous le capot, etape par etape].
+1. L'evenement A est declenche visuellement.
+2. Le service X le capte silencieusement.
+3. Le resultat se voit dans le Dashboard Y.
+
+## Exemples d'Alerte / UI (Mockups via Alertes GitHub)
+> [!WARNING]
+> CRITICAL: Error detected ...
+```
+
+---
+
+## 3. Regle d'Or de la Collaboration (The "Zero Emoji" Rule)
+1. **Penser (Vision)** -> 2. **Debattre (Catalogue)** -> 3. **Coder (Technique)** -> 4. **Prouver (Mapping)** -> 5. **Archiver (Roadmap)**.
+Rien n'est considere termine tant que les 4 documents de gouvernance ne sont pas mis a jour de maniere synchrone.
+
+**THE DIRECTIVE**: L'ecrit professionnel doit rester industriel et epure. Zero emojis, jamais. Toute communication ou documentation echangee avec l'Humain doit etre depourvue d'artifices visuels de type emoji.

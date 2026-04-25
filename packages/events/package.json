@@ -1,0 +1,17 @@
+{
+  "name": "@ai-dev/events",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "ioredis": "^5.3.2",
+    "@ai-dev/shared": "*",
+    "@ai-dev/logger": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}

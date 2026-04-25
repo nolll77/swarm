@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ai-dev-secrets
+type: Opaque
+stringData:
+  database-url: "postgresql://user:password@postgres:5432/ai_dev_saas"
+  redis-url: "redis://redis:6379"
+  openai-api-key: "sk-your-key-here"
+  github-token: "ghp_your-token-here"
+  github-webhook-secret: "your-webhook-secret"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ai-dev-config
+data:
+  LOG_LEVEL: "info"
+  AI_MODEL: "gpt-4o"
+  MAX_RETRIES: "3"
+  NODE_ENV: "production"

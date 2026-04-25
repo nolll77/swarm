@@ -1,0 +1,21 @@
+{
+  "name": "@ai-dev/multi-cloud-controller",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "@ai-dev/shared": "*",
+    "@ai-dev/database": "*",
+    "@ai-dev/events": "*",
+    "@ai-dev/logger": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.1"
+  }
+}
