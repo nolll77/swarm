@@ -80,9 +80,14 @@ make apply
 make deploy-staging
 ```
 
-## 7. Strategic Business Vision
+## 7. Strategic Governance & Business Vision
 
-Amaswarn is positioned for high-scale enterprise deployment, focusing on high gross margins (>85%) and significant engineering velocity impact. Detailed financial models and ROI analyses are available in the `docs/` directory.
+Amaswarn is governed by a strict collaboration framework and a sovereign business strategy. Detailed models are available in the dedicated governance directory:
+
+- **[AI-Human Collaboration Manifesto](./governance/ai_colab_manifesto.md)**: Our core operational contract.
+- **[Expansion Roadmap](./governance/roadmap_expansion.md)**: Technical strategy for 100M ARR scale.
+- **[Business Case & Strategy](./governance/pitch_deck_notion.md)**: ROI analysis and market differentiation.
+- **[Monorepo Playbook](./governance/monorepo_playbook.md)**: Engineering resilience and CI/CD rules.
 
 ---
 End of Industrial Documentation.
