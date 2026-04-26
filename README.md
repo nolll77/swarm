@@ -30,37 +30,37 @@ While the AI ecosystem favors Python for rapid prototyping, Amaswarn is built on
 
 Sovereignty is not an afterthought or a "feature" added at the end; it is encoded in the platform's DNA.
 
-1. **Architecture as Proof**: Unlike trust-based systems, Amaswarn implements hard multi-tenant isolation (mandatory `tenantId` mapping) and autonomous GDPR auditors that scan every diff for PII before it leaves the cluster.
-2. **True Independence**: The system is designed to be cloud and LLM agnostic. By decoupling logic from specific providers (OpenAI, AWS), Amaswarn ensures that the customer remains the master of their intelligence, ready to pivot to local models or alternative clouds without friction.
-3. **Control over Freedom**: Every "agentic" decision is governed by a deterministic Policy Engine. We prioritize engineering reliability and legal compliance over unconstrained AI autonomy.
+- **Architecture as Proof**: Unlike trust-based systems, Amaswarn implements hard multi-tenant isolation (mandatory `tenantId` mapping) and autonomous GDPR auditors that scan every diff for PII before it leaves the cluster.
+- **True Independence**: The system is designed to be cloud and LLM agnostic. By decoupling logic from specific providers (OpenAI, AWS), Amaswarn ensures that the customer remains the master of their intelligence, ready to pivot to local models or alternative clouds without friction.
+- **Control over Freedom**: Every "agentic" decision is governed by a deterministic Policy Engine. We prioritize engineering reliability and legal compliance over unconstrained AI autonomy.
 
 ## 4. Competitive Moats (Why we win)
 
 Amaswarn is built with structural defensive barriers that distinguish it from standard AI assistants:
-1. **The Binding Moat (End-to-End)**: While others just write code, Amaswarn is the only platform that binds code generation to **real CI validation, GDPR audit, and automated canary rollouts**. We don't just suggest; we deliver validated PRs.
-2. **The Control Moat (Strategic Isolation)**: Our "Policy Engine" architecture ensures that AI never touches critical core modules (Auth, Billing) unless explicitly allowed, offering the governance level required by regulated industries.
-3. **The Sovereignty Moat (Privacy-First)**: Native multi-tenant isolation and EU-centric GDPR auditing ensure data never leaks between tenants, a mandatory requirement for Enterprise SaaS.
+- **The Binding Moat (End-to-End)**: While others just write code, Amaswarn is the only platform that binds code generation to **real CI validation, GDPR audit, and automated canary rollouts**. We don't just suggest; we deliver validated PRs.
+- **The Control Moat (Strategic Isolation)**: Our "Policy Engine" architecture ensures that AI never touches critical core modules (Auth, Billing) unless explicitly allowed, offering the governance level required by regulated industries.
+- **The Sovereignty Moat (Privacy-First)**: Native multi-tenant isolation and EU-centric GDPR auditing ensure data never leaks between tenants, a mandatory requirement for Enterprise SaaS.
 
 ## 5. Native Orchestration vs. AI Frameworks
 
 Unlike typical AI projects, Amaswarn **does not use LangChain or LangGraph**. This is a deliberate engineering choice to ensure industrial-grade reliability:
-1. **Zero-Abstraction Traceability**: Direct OpenAI integration allows 100% visibility into every payload, avoiding the "black box" debugging nightmare of heavy frameworks.
-2. **Strict Deterministic Control**: The swarm's transitions are governed by a TypeScript state machine (The Orchestrator), not by an autonomous LLM deciding its own path. This prevents uncontrolled API costs and infinite loops.
-3. **Decentralized Scaling**: Built on a pure Event-Bus architecture, agents act as independent microservices. This allows for sovereign deployment where sensitive agents (like GDPR) can run on strictly localized clusters.
+- **Zero-Abstraction Traceability**: Direct OpenAI integration allows 100% visibility into every payload, avoiding the "black box" debugging nightmare of heavy frameworks.
+- **Strict Deterministic Control**: The swarm's transitions are governed by a TypeScript state machine (The Orchestrator), not by an autonomous LLM deciding its own path. This prevents uncontrolled API costs and infinite loops.
+- **Decentralized Scaling**: Built on a pure Event-Bus architecture, agents act as independent microservices. This allows for sovereign deployment where sensitive agents (like GDPR) can run on strictly localized clusters.
 
 ## 6. The Agentic Workflow (Why it's not a Copilot)
 
 Amaswarn is a true **Agentic AI** system. Unlike passive Generative AI that only responds to immediate human prompts, Amaswarn possesses autonomous agency:
-1. **Asynchronous Initiative**: Agents wake up autonomously based on cluster events (e.g., CI failures immediately trigger the SRE-Agent).
-2. **Tool Calling & Execution**: The cognitive layer does not just generate text; it requests terminal execution, inspects logs, and interacts with GitHub APIs.
-3. **Iterative Self-Correction**: The swarm functions in a closed loop. If the Reviewer-Agent detects a flaw in the Coder-Agent's output, it routes the task back for correction without requiring human supervision.
+- **Asynchronous Initiative**: Agents wake up autonomously based on cluster events (e.g., CI failures immediately trigger the SRE-Agent).
+- **Tool Calling & Execution**: The cognitive layer does not just generate text; it requests terminal execution, inspects logs, and interacts with GitHub APIs.
+- **Iterative Self-Correction**: The swarm functions in a closed loop. If the Reviewer-Agent detects a flaw in the Coder-Agent's output, it routes the task back for correction without requiring human supervision.
 
 ## 7. Long-Term Vector Memory (RAG)
 
 To ensure the swarm understands the global context of a customer's codebase rather than just the isolated files modified in a PR, Amaswarn implements a native Retrieval-Augmented Generation (RAG) microservice (`services/vector-memory`):
-1. **Repository Indexing**: Listens to indexing events, chunks the codebase, and generates Vector Embeddings (via OpenAI).
-2. **Semantic Querying**: Cognitive agents (like the Coder-Agent) emit queries on the Event Bus (e.g., "How does this tenant handle date formatting?") and receive precisely matching code snippets and similarity scores.
-3. **Pluggable Persistence**: Deployed natively with an `InMemoryVectorStore` for rapid development, built behind standard interfaces ready to be instantly swapped to **ChromaDB, Pinecone, or Weaviate** for high-volume enterprise production.
+- **Repository Indexing**: Listens to indexing events, chunks the codebase, and generates Vector Embeddings (via OpenAI).
+- **Semantic Querying**: Cognitive agents (like the Coder-Agent) emit queries on the Event Bus (e.g., "How does this tenant handle date formatting?") and receive precisely matching code snippets and similarity scores.
+- **Pluggable Persistence**: Deployed natively with an `InMemoryVectorStore` for rapid development, built behind standard interfaces ready to be instantly swapped to **ChromaDB, Pinecone, or Weaviate** for high-volume enterprise production.
 
 ## 8. The 22 Autonomous Agents Swarm
 
@@ -100,7 +100,7 @@ Execute math, API routing, and infrastructure logic with 100% predictability (No
 | RBAC-Agent | Granular access control and agent privilege governance. |
 | Patch-Agent | Proactive vulnerability correction and CVE remediation. |
 
-### 9. Sovereign Deployment & Infrastructure
+## 9. Sovereign Deployment & Infrastructure
 
 Amaswarn is designed for total infrastructure sovereignty. The entire stack is provisioned as code:
 
