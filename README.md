@@ -4,7 +4,8 @@
 
 Amaswarn is an enterprise-grade AI software engineering platform that orchestrates a multi-agent swarm to transform GitHub issues into validated, production-ready pull requests. It is built on a sovereign infrastructure with strict security, compliance, and self-healing capabilities.
 
-*Amaswarn est une plateforme d'ingénierie logicielle IA de classe entreprise qui orchestre un essaim multi-agents pour transformer les tickets GitHub en pull requests validées et prêtes pour la production. Elle est bâtie sur une infrastructure souveraine avec une sécurité stricte, une conformité rigoureuse et des capacités d'auto-guérison.*
+*Amaswarn est une plateforme d'ingénierie logicielle basée sur l'IA destinée aux entreprises, qui coordonne un essaim multi-agents afin de transformer les tickets GitHub en pull requests validées et prêtes à être déployées en production. Amaswarn repose sur une infrastructure souveraine dotée de capacités rigoureuses en matière de sécurité, de conformité et d'auto-réparation.*
+
 
 
 ## 1. System Architecture
@@ -21,7 +22,8 @@ The platform follows a distributed, event-driven microservices architecture:
 
 While the AI ecosystem favors Python for rapid prototyping, Amaswarn is built on a **Unified TypeScript Monorepo** to prioritize architectural stability and end-to-end type safety. This choice ensures that our 22-agent swarm operates as resilient, event-driven microservices rather than isolated scripts, sharing a single source of truth across the API, Swarm, and Dashboard. By leveraging Node.js as our high-concurrency backbone, we eliminate the runtime ambiguity of Python and ensure the platform is "Software Architect" grade (Production Ready), not just "Data Scientist" grade (Experimental).
 
-*Amaswarn privilégie la stabilité architecturale au prototypage rapide. En utilisant un Monorepo TypeScript, nous éliminons l'ambiguïté du Python pour garantir que notre essaim d'agents fonctionne comme des microservices résilients, et non comme de simples scripts. C'est le passage du niveau "Data Scientist" (Expérimental) au niveau "Software Architect" (Prêt pour la Production).*
+*Alors que l'écosystème de l'IA privilégie Python, Amaswarn repose volontairement sur un mono-repo écrit en TypeScript afin de privilégier la stabilité architecturale et la sécurité du typage, de bout en bout. Ce choix garantit que notre « essaim » de 22 agents fonctionne comme des microservices résilients et pilotés par les événements, plutôt que comme des scripts isolés et non-orchestrés, en partageant une source unique de vérité entre l'API, l'essaim et le tableau de bord. En utilisant Node.js comme infrastructure à haute vélocité, nous éliminons l'ambiguïté d'exécution de Python et garantissons que la plateforme est de niveau « architecture de logiciel » (prête pour la production et l'industrialisation), et non pas simplement d'un niveau « data scientist » (donc simplement expérimental).*
+
 
 
 ## 3. Sovereignty by Design
