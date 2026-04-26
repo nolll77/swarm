@@ -23,12 +23,16 @@ The platform follows a distributed, event-driven microservices architecture:
 > <font size="4">La plateforme repose sur une architecture de microservices distribuée et pilotée par les événements :
 >
 > - Couche d'ingestion : API Gateway gère les webhooks GitHub et l'authentification des clients.
+>
 >  **↓**
 > - Routing cognitif : Task Router classe les niveaux de risque et applique les limites de budget strictes.
+>
 >  **↓**
 > - Orchestration Agentique : Global Orchestrator gère la machine à états asynchrone pour l'exécution des tâches.
+>
 >  **↓**
 > - Agent Swarm : 22 agents spécialisés (Planner, Coder, Reviewer, SRE, GDPR, etc.) exécutent des workflows indépendants et autonomes.
+>
 >  **↓**
 > - Persistance et contexte : PostgreSQL pour les métadonnées, Redis pour le streaming d'événements, la base de donnée vectorielle (RAG) pour la compréhension long terme du code source du projet.</font>
 
@@ -77,7 +81,7 @@ Amaswarn is built with structural defensive barriers that distinguish it from st
 >   - à un audit RGPD ;
 >   - à des déploiements canary automatisés.
 >
-> --> Nous ne nous contentons pas de faire des suggestions : nous fournissons des PR validées.
+>     --> Nous ne nous contentons pas de faire des suggestions : nous fournissons des PR validées.
 >
 > - Le Control Moat (segmentation stratégique) : notre architecture « Policy Engine » garantit que l'IA n'accède jamais aux modules d'importance capitale et critiques (ex : authentification, facturation) sauf autorisation explicite, offrant ainsi le niveau de gouvernance requis par les secteurs réglementés.
 >
