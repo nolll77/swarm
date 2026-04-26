@@ -1,4 +1,4 @@
-import { TOPICS } from "../../packages/shared/src/constants";
+import { TOPICS } from "@ai-dev/shared";
 
 export class SwarmOrchestrator {
   private taskId: string;

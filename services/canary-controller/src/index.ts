@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import cron from "node-cron";
 import { getEventBus } from "@ai-dev/events";
 import { createLogger } from "@ai-dev/logger";
-import { TOPICS } from "@ai-dev/shared";
+import { TOPICS, toJsonSafe } from "@ai-dev/shared";
 import prisma from "@ai-dev/database";
 import { CanaryEvaluator } from "./evaluator";
 import { ALBTrafficRouter } from "./router";
@@ -86,7 +86,7 @@ async function start() {
           tenantId: "system",
           action: "canary_health_evaluated",
           actor: "canary-controller",
-          details: {
+          details: toJsonSafe({
             deploymentId: canary.deploymentId,
             versionId: canary.versionId,
             currentWeight,
@@ -94,7 +94,7 @@ async function start() {
             score: result.score,
             reason: result.reason ?? null,
             metrics: result.metrics as unknown as Record<string, unknown>
-          } as unknown as Record<string, unknown>
+          })
         }
       });
 
