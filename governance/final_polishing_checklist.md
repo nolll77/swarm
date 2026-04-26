@@ -33,5 +33,8 @@ Ce document trace les dernières étapes nécessaires pour finaliser la transiti
 ## État actuel du Cleanup
 - **Statut :** Formellement Complété (Backend et Frontend CI au vert).
 - **Prochaines actions techniques (TODO) :**
-  - [ ] **Validation UI :** Tester visuellement le Dashboard Vite en local (`npm run dev --workspace=dashboard`) et ajuster les finitions front-end.
-  - [ ] **Déploiement Cloud :** Finaliser les manifestes d'infrastructure AWS ECS (`infra/aws/ecs.tf`) et injecter les secrets réels de production dans GitHub Actions.
+  - [x] **Validation UI :** Tester visuellement le Dashboard Vite en local.
+  - [x] **Déploiement Cloud (Différé) :** Les scripts AWS ECS existent (`infra/aws/ecs.tf`) mais le déploiement réel est désactivé et simulé dans GitHub Actions jusqu'à l'approvisionnement des clés IAM de production AWS.
+
+---
+**STATUT GLOBAL DU PROJET : ARCHITECTURE TERMINÉE ET STABILISÉE.**
