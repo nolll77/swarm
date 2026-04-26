@@ -4,7 +4,7 @@
 
 Amaswarn is an enterprise-grade AI software engineering platform that orchestrates a multi-agent swarm to transform GitHub issues into validated, production-ready pull requests. It is built on a sovereign infrastructure with strict security, compliance, and self-healing capabilities.
 
-*Amaswarn est une plateforme d'ingénierie logicielle basée sur l'IA destinée aux entreprises, qui coordonne un essaim multi-agents afin de transformer les tickets GitHub en pull requests validées et prêtes à être déployées en production. Amaswarn repose sur une infrastructure souveraine dotée de capacités rigoureuses en matière de sécurité, de conformité et d'auto-réparation.*
+> <font size="4">Amaswarn est une plateforme d'ingénierie logicielle basée sur l'IA destinée aux entreprises, qui coordonne un essaim multi-agents afin de transformer les tickets GitHub en pull requests validées et prêtes à être déployées en production. Amaswarn repose sur une infrastructure souveraine dotée de capacités rigoureuses en matière de sécurité, de conformité et d'auto-réparation.</font>
 
 
 
@@ -18,11 +18,19 @@ The platform follows a distributed, event-driven microservices architecture:
 - **Agent Swarm**: 22 specialized agents (Planner, Coder, Reviewer, SRE, GDPR, etc.) execute autonomous workflows.
 - **Persistence & Context**: PostgreSQL for metadata, Redis for event streaming, and Vector Memory (RAG) for long-term codebase understanding.
 
+> <font size="4">La plateforme repose sur une architecture de microservices distribuée et pilotée par les événements :
+>
+> - Couche d'ingestion : API Gateway gère les webhooks GitHub et l'authentification des clients.
+> - Routing cognitif : Task Router classe les niveaux de risque et applique les limites de budget strictes.
+> - Orchestration Agentique : Global Orchestrator gère la machine à états asynchrone pour l'exécution des tâches.
+> - Agent Swarm : 22 agents spécialisés (Planner, Coder, Reviewer, SRE, GDPR, etc.) exécutent des workflows indépendants et autonomes.
+> - Persistance et contexte : PostgreSQL pour les métadonnées, Redis pour le streaming d'événements, la base de donnée vectorielle (RAG) pour la compréhension long terme du code source du projet.</font>
+
 ## 2. Technical Stack: Industrial-Grade TypeScript
 
 While the AI ecosystem favors Python for rapid prototyping, Amaswarn is built on a **Unified TypeScript Monorepo** for industrial stability. This ensures our 22-agent swarm operates as resilient microservices with end-to-end type safety, sharing a single source of truth across the entire platform. By leveraging Node.js's non-blocking I/O, our orchestrator manages hundreds of parallel agentic events simultaneously—handling the load where traditional Python-based scripts would hit concurrency bottlenecks (GIL).
 
-*Alors que l'écosystème de l'IA privilégie Python, Amaswarn repose sur un mono-repo écrit en TypeScript afin de privilégier la stabilité architecturale et la sécurité du typage. Ce choix garantit que notre essaim d'agents fonctionne comme des microservices résilients, partageant une source unique de vérité. En exploitant la gestion asynchrone massive de Node.js, l'orchestrateur agentique peut traiter plusieurs centaines d'événements en parallèle sans jamais bloquer, là où des scripts Python traditionnels atteindraient leurs limites de montée en charge (cf. GIL).*
+> <font size="4">Alors que l'écosystème de l'IA privilégie Python, Amaswarn repose sur un mono-repo écrit en TypeScript afin de privilégier la stabilité architecturale et la sécurité du typage. Ce choix garantit que notre essaim d'agents fonctionne comme des microservices résilients, partageant une source unique de vérité. En exploitant la gestion asynchrone massive de Node.js, l'orchestrateur agentique peut traiter plusieurs centaines d'événements en parallèle sans jamais bloquer, là où des scripts Python traditionnels atteindraient leurs limites de montée en charge (cf. GIL).</font>
 
 
 
@@ -34,11 +42,11 @@ Sovereignty is not an afterthought or a "feature" added at the end; it is encode
 - **True Independence**: The system is designed to be cloud and LLM agnostic. By decoupling logic from specific providers (OpenAI, AWS), Amaswarn ensures that the customer remains the master of their intelligence, ready to pivot to local models or alternative clouds without friction.
 - **Control over Freedom**: Every "agentic" decision is governed by a deterministic Policy Engine. We prioritize engineering reliability and legal compliance over unconstrained AI autonomy.
 
-> La souveraineté n'est pas une réflexion qui est venue par la suite, ni une « fonctionnalité » ajoutée en fin de projet : la souveraineté est inscrite dans l'ADN de la plateforme.
+> <font size="4">La souveraineté n'est pas une réflexion qui est venue par la suite, ni une « fonctionnalité » ajoutée en fin de projet : la souveraineté est inscrite dans l'ADN de la plateforme.
 >
-> - **Architecture as Proof** : contrairement aux systèmes basés sur la confiance (ou un défaut de parfaite compréhension des systèmes), Amaswarn met en œuvre une isolation stricte des multiples parties prenantes (ex : mappage obligatoire des identifiants de locataires) et des agents auditeurs RGPD autonomes, ceux-ci iront pister et analyser chaque modification de données à caractère personnel avant qu'elle ne quitte le cluster.
-> - **Une véritable indépendance** : le système est conçu pour être indépendant du cloud et des LLM : en dissociant les services spécifiques (tels OpenAI, AWS, etc), Amaswarn garantit que le client, les utilisateurs restent maîtres : la plateforme est prête à basculer vers des modèles locaux, développés soi-même, ou passer à d'autres clouds sans friction.
-> - **Le contrôle préféré à la liberté/hallucination** : chaque décision « agentique » est régie par un moteur de politiques déterministe. Nous privilégions la fiabilité technique et la conformité juridique plutôt qu'une autonomie illimitée de l'IA.
+> - Architecture as Proof : contrairement aux systèmes basés sur la confiance (ou un défaut de parfaite compréhension des systèmes), Amaswarn met en œuvre une isolation stricte des multiples parties prenantes (ex : mapping obligatoire des identifiants d'accès) et des agents auditeurs RGPD autonomes, ceux-ci iront pister et analyser chaque modification de données à caractère personnel avant qu'elle ne quitte le cluster.
+> - Une véritable indépendance : le système est conçu pour être indépendant du cloud et des LLM : en dissociant les services spécifiques (tels OpenAI, AWS, etc), Amaswarn garantit que le client, les utilisateurs restent maîtres : la plateforme est prête à basculer vers des modèles locaux, développés soi-même, ou passer à d'autres clouds sans friction.
+> - Le contrôle préféré à la liberté/hallucination : chaque décision « agentique » est régie par un moteur de politiques déterministe. Nous privilégions la fiabilité technique et la conformité juridique plutôt qu'une autonomie illimitée de l'IA.</font>
 
 ## 4. Competitive Moats (Why we win)
 
@@ -47,15 +55,15 @@ Amaswarn is built with structural defensive barriers that distinguish it from st
 - **The Control Moat (Strategic Isolation)**: Our "Policy Engine" architecture ensures that AI never touches critical core modules (Auth, Billing) unless explicitly allowed, offering the governance level required by regulated industries.
 - **The Sovereignty Moat (Privacy-First)**: Native multi-tenant isolation and EU-centric GDPR auditing ensure data never leaks between tenants, a mandatory requirement for Enterprise SaaS.
 
-> Amaswarn s'appuie sur des barrières défensives structurelles qui le distinguent des assistants IA classiques :
+> <font size="4">Amaswarn s'appuie sur des barrières défensives structurelles qui le distinguent des assistants IA classiques :
 >
-> - **Le Binding Moat (barrer la route)** : alors que d'autres systèmes ne se contentent qu'à écrire du code, Amaswarn est la seule plateforme qui relie la génération de code à :
+> - Le Binding Moat (barrer la route) : alors que d'autres copilots ne font que suggérer du code, Amaswarn est une plateforme qui relie la génération de code à :
 >   - une validation CI réelle ;
 >   - à un audit RGPD ;
 >   - à des déploiements canary automatisés.
-> Nous ne nous contentons pas de faire des suggestions : nous fournissons des PR validées.
-> - **Le Control Moat (segmentation stratégique)** : notre architecture « Policy Engine » garantit que l'IA n'accède jamais aux modules d'importance capitale et critiques (ex : authentification, facturation) sauf autorisation explicite, offrant ainsi le niveau de gouvernance requis par les secteurs réglementés.
-> - **Le Sovereignty Moat (priorité à la confidentialité)** : l'isolation en natif des clients mutiples et l'audit RGPD garantissent qu'aucune fuite de données ne se produit entre les clients, une exigence obligatoire pour le SaaS d'entreprise.
+> --> Nous ne nous contentons pas de faire des suggestions : nous fournissons des PR validées.
+> - Le Control Moat (segmentation stratégique) : notre architecture « Policy Engine » garantit que l'IA n'accède jamais aux modules d'importance capitale et critiques (ex : authentification, facturation) sauf autorisation explicite, offrant ainsi le niveau de gouvernance requis par les secteurs réglementés.
+> - Le Sovereignty Moat (priorité à la confidentialité) : l'isolation native des clients multiples et l'audit RGPD garantissent qu'aucune fuite de données ne se produit entre les clients, une exigence obligatoire pour le SaaS d'entreprise.</font>
 
 ## 5. Native Orchestration vs. AI Frameworks
 
@@ -64,14 +72,15 @@ Unlike typical AI projects, Amaswarn **does not use LangChain or LangGraph**. Th
 - **Strict Deterministic Control**: The swarm's transitions are governed by a TypeScript state machine (The Orchestrator), not by an autonomous LLM deciding its own path. This prevents uncontrolled API costs and infinite loops.
 - **Decentralized Scaling**: Built on a pure Event-Bus architecture, agents act as independent microservices. This allows for sovereign deployment where sensitive agents (like GDPR) can run on strictly localized clusters.
 
-*Technical Context: [What Is the Python Global Interpreter Lock](https://realpython.com/python-gil/) | [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)*
-
-> **Orchestration agentique native vs. Frameworks IA**
+> <font size="4">Orchestration agentique native vs. Frameworks IA
 >
-> Contrairement aux projets d'IA classiques, Amaswarn n'utilise ni **LangChain ni LangGraph** ; en effet, il s'agit d'un choix technique délibéré visant à garantir une fiabilité de niveau industriel :
-> - **Traçabilité sans abstraction** : l'intégration directe d'OpenAI offre une visibilité totale sur chaque charge utile, évitant ainsi le cauchemar du débogage en « boîte noire » propre aux frameworks lourds.
-> - **Contrôle déterministe strict** : les transitions de l'essaim multi-agents sont régies par une machine à états TypeScript (l'Orchestrateur), et non par un LLM autonome décidant de son propre chemin : cela évite les coûts d'API incontrôlés et des boucles infinies.
-> - **Évolutivité décentralisée** : construits sur une architecture en Bus d'Événements pure, les agents agissent comme des microservices indépendants : cela permet un déploiement souverain où les agents sensibles (comme le RGPD) peuvent s'exécuter sur des clusters strictement localisés.
+> Contrairement aux projets d'IA classiques, Amaswarn n'utilise ni **LangChain ni LangGraph** ; en effet, il s'agit d'un choix technique délibéré visant à garantir **une fiabilité de niveau industriel** :
+> - Traçabilité sans abstraction : l'intégration directe d'OpenAI offre une visibilité totale sur chaque charge utile, évitant ainsi le cauchemar d'un capharnaüm pour déboguer, préoccupation propre aux frameworks lourds.
+> - Contrôle déterministe strict : les transitions de l'essaim multi-agents sont régies par une machine à états TypeScript (l'Orchestrateur), et non par un LLM autonome décidant de son propre chemin : cela évite les coûts d'API incontrôlés et des boucles infinies.
+> - Évolutivité décentralisée : construits sur une architecture en Bus d'Événements pure, les agents agissent comme des microservices indépendants : cela permet un déploiement souverain où les agents sensibles (comme le RGPD) peuvent s'exécuter sur des clusters strictement localisés.
+>
+> [What Is the Python Global Interpreter Lock](https://realpython.com/python-gil/)
+> [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)</font>
 
 ## 6. The Agentic Workflow (Why it's not a Copilot)
 
@@ -80,11 +89,11 @@ Amaswarn is a true **Agentic AI** system. Unlike passive Generative AI that only
 - **Tool Calling & Execution**: The cognitive layer does not just generate text; it requests terminal execution, inspects logs, and interacts with GitHub APIs.
 - **Iterative Self-Correction**: The swarm functions in a closed loop. If the Reviewer-Agent detects a flaw in the Coder-Agent's output, it routes the task back for correction without requiring human supervision.
 
-> Amaswarn est un véritable système d'IA agentique. Contrairement à l'IA générative passive qui se contente de répondre aux demandes immédiates des utilisateurs, Amaswarn dispose d'une capacité d'action autonome :
+> <font size="4">Amaswarn est un véritable système d'IA agentique : contrairement à l'IA générative passive qui ne se contente que de répondre aux demandes immédiates des utilisateurs, Amaswarn dispose d'une capacité d'action autonome.
 >
-> - **Initiative asynchrone** : les agents se déclenchent de manière autonome en fonction d'événements au sein du cluster (par exemple, les échecs de CI déclenchent immédiatement l'agent SRE).
-> - **Appel et exécution d'outils** : la couche cognitive ne se contente pas de générer du texte ; elle demande l'exécution de commandes sur le terminal, inspecte les journaux et interagit avec les API GitHub.
-> - **Autocorrection itérative** : l'essaim agentic fonctionne en boucle fermée : si l'agent de review détecte une erreur dans la sortie de l'agent de coding, il renvoie la tâche pour correction sans nécessiter une intervention humaine.
+> - Initiative asynchrone : les agents se déclenchent de manière autonome en fonction d'événements au sein du cluster (par exemple, les échecs de CI déclenchent immédiatement l'agent SRE).
+> - Appel et exécution d'outils : la couche cognitive ne se contente pas de générer du texte ; elle demande l'exécution de commandes sur le terminal, inspecte les journaux et interagit avec les API GitHub.
+> - Autocorrection itérative : l'essaim agentic fonctionne en boucle fermée : si l'agent de review détecte une erreur dans la sortie de l'agent de coding, il renvoie la tâche pour correction sans nécessiter une intervention humaine.</font>
 
 ## 7. Long-Term Vector Memory (RAG)
 
@@ -93,11 +102,11 @@ To ensure the swarm understands the global context of a customer's codebase rath
 - **Semantic Querying**: Cognitive agents (like the Coder-Agent) emit queries on the Event Bus (e.g., "How does this tenant handle date formatting?") and receive precisely matching code snippets and similarity scores.
 - **Pluggable Persistence**: Deployed natively with an `InMemoryVectorStore` for rapid development, built behind standard interfaces ready to be instantly swapped to **ChromaDB, Pinecone, or Weaviate** for high-volume enterprise production.
 
-> Pour s'assurer que l'essaim comprenne le contexte global du code d'un client plutôt que des fichiers isolés seuls et modifiés dans une PR, Amaswarn met en œuvre un microservice natif de génération augmentée par la recherche (RAG) (services/vector-memory) :
+> <font size="4">Pour s'assurer que l'essaim comprenne le contexte global du code d'un développeur plutôt que des fichiers isolés seuls et modifiés dans une PR, Amaswarn met en œuvre un microservice natif de génération augmentée par retrieval (**RAG**) :
 >
-> - **Indexation du référentiel** : écoute les événements d'indexation, découpe le code en segments et génère des vecteurs d'encodage (via l'API OpenAI).
-> - **Requêtes sémantiques** : les agents cognitifs (tels que le Coder-Agent) émettent des requêtes sur le bus d'événements (par exemple, « Comment ce tenant gère-t-il le formatage des dates ? ») et reçoivent des extraits de code correspondant précisément ainsi que des scores de similarité.
-> - **Persistance modulaire** : déployée en natif avec un InMemoryVectorStore pour un développement rapide, elle s'appuie sur des interfaces standardisées, prêtes à être instantanément remplacées par ChromaDB, Pinecone ou Weaviate pour une production d'entreprise à haute volumétrie.
+> - Indexation du référentiel : écoute les événements d'indexation, découpe le code en segments et génère des vecteurs d'encodage (via l'API OpenAI).
+> - Requêtes sémantiques : les agents cognitifs (tels que le Coder-Agent) émettent des requêtes sur le bus d'événements (par exemple, « Comment ce tenant gère-t-il le formatage des dates ? ») et reçoivent des extraits de code correspondant précisément ainsi que des scores de similarité.
+> - Persistance modulaire : déployée en natif avec un InMemoryVectorStore pour un développement rapide, elle s'appuie sur des interfaces standardisées, prêtes à être instantanément remplacées par ChromaDB, Pinecone ou Weaviate pour une production d'entreprise à haute volumétrie.</font>
 
 ## 8. The 22 Autonomous Agents Swarm
 
