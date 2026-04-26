@@ -1,40 +1,46 @@
 # AMASWARN — Sovereign Engineering Intelligence (Enterprise SaaS)
 
-> **"Transformez vos GitHub Issues en Pull Requests certifiées, validées par un essaim de 22 micro-agents spécialisés, sous conformité RGPD."**
+> **"Industrialiser l'autonomie logicielle : Du ticket GitHub au déploiement certifié sans compromis sur la souveraineté."**
 
 ---
 
-## LA PROMESSE PRODUIT (Au-delà du Copilot)
-Amaswarn n'est pas un assistant de code. C'est une usine logicielle autonome, souveraine et contrainte par le risque.
-- **Issue-to-Merged :** 50-80% des tickets techniques résolus et testés *end-to-end* sans intervention humaine.
-- **Self-Healing CI :** L'Agent SRE diagnostique (analyse TSC, logs GitHub Actions) et corrige les builds cassés en autonomie.
-- **Compliance-by-Design :** Revue d'architecture automatique par l'Agent RGPD (via LLM OpenAI structurés) remplaçant 60% des audits humains et bloquant les fuites de PII en temps réel.
+## 🏗️ LA PROMESSE PRODUIT : L'USINE LOGICIELLE AUTONOME
+Amaswarn n'est pas un assistant de code. C'est une usine logicielle contrainte par le risque, conçue pour les industries régulées.
+- **Full Autonomous Cycle (Issue-to-Merged) :** Résolution, test et validation de 80% du backlog technique sans intervention humaine.
+- **Self-Healing Infrastructure (RCA-as-a-Service) :** L'agent SRE détecte les régressions, analyse les logs de build et corrige le code avant même que l'humain ne soit alerté.
+- **Sovereign Compliance :** Audit temps-réel par l'Agent RGPD. Zero fuite de PII, isolation stricte par design ("Privacy by Design").
 
 ---
 
-## L'ARCHITECTURE (THE 22-MICROSERVICES SWARM)
-Nous avons prouvé la scalabilité : l'architecture repose sur un Monorepo Turborepo stabilisé avec un CI/CD Zero-Error.
-- **Multi-Agent Orchestrator :** Machine d'état pilotée par événements (Redis/EventBus) orchestrant l'Agent Coder, l'Agent UI, et l'Agent GDPR.
-- **Governance Policy Engine :** Typage strict (Prisma, TypeScript itérateurs) empêchant mathématiquement l'IA de corrompre les bases de données (isolation `tenantId`).
-- **Canary & Chaos Rollouts :** L'orchestrateur abstrait l'infrastructure (AWS ECS) pour des déploiements progressifs où l'IA surveille elle-même ses propres régressions.
+## 🧠 L'ARCHITECTURE : LE SWARM DE 22 AGENTS
+Nous ne parions pas sur un LLM monolithique. Nous orchestrons une intelligence distribuée et spécialisée.
+- **Multi-Agent Hyper-Specialization :** 22 micro-agents (Coder, UI, GDPR, SRE, Chaos, Patch...) avec des responsabilités atomiques.
+- **Event-Driven Resilience :** Une machine d'état asynchrone (Redis/Turborepo) qui absorbe les échecs sans jamais perdre l'état du projet.
+- **Prompt Evolution Architecture :** Grâce à l'Evolve-Agent, le système apprend de ses échecs cryptiques et mute ses propres prompts pour devenir plus performant à chaque sprint.
 
 ---
 
-## BUSINESS MODEL & MONÉTISATION
-- Plan Dev (Gratuit) : PR assistées manuellement pour les projets Open Source.
-- Plan Team (99€/u/mois) : Auto-PR + Self-healing CI + Dashboard de monitoring.
-- Plan Enterprise (Sur mesure) : Auto-merge safe-mode + Policy Engine granulaire + Audit logs complets.
+## 💰 BUSINESS MODEL : CAPTURER LA MARGE DE L'INGÉNIERIE
+Nous ne vendons pas des licences, nous vendons de la capacité de production certifiée.
+- **Plan Sovereign (Enterprise) :** 
+  - Déploiement "On-Premise" ou en VPC Cloud souverain.
+  - Policy Engine granulaire (bloque l'IA sur les cœurs critiques : Auth, Paiement).
+  - Audit logs immuables pour conformité SOC2/RGPD.
+- **Pricing Core-Based :** Facturation basée sur la taille du Swarm alloué et le volume de PR certifiées.
 
 ---
 
-## ROI CLIENT (POURQUOI L'ENTREPRISE ACHÈTE)
-1. **Vélocité SRE :** Réduction du cycle de vie des tickets et de récupération CI de 3 jours à 15 minutes.
-2. **Réduction des Coûts :** L'ingénierie de "plomberie" (CRUD, dépendances, fix de TSConfig) est totalement déchargée sur le Swarm.
-3. **Audits Automatisés :** La conformité RGPD et SOC2 n'est plus un goulot d'étranglement de fin de sprint, c'est une barrière CI automatisée à chaque commit.
+## 📈 ROI INTERPRISE : POURQUOI LES CTO NOUS CHOISISSENT
+1. **Élimination de la Dette Technique :** Le Swarm traite les refactorings "ennuyeux" (migrations de versions, typage TypeScript, cleanup) en arrière-plan.
+2. **Time-to-Production :** Réduction du cycle de revue-correction de 72h à 12 minutes.
+3. **Zéro-Risque Humain :** Les "Elite Quality Gates" garantissent qu'aucune ligne de code non-conforme aux règles de sécurité ne peut atteindre la branche `main`.
 
 ---
 
-## NOTRE FOSSÉ (THE ENGINEERING MOAT)
-1. **Dernier Kilomètre (End-to-End Binding) :** Là où Devin hallucine de l'abstraction, Amaswarn génère la Pull Request, passe les tests CI Turborepo, audite avec l'Agent RGPD, et propose un merge safe.
-2. **Conformité Souveraine Native :** L'unique architecture IA incluant une isolation sémantique des tenants, bloquant l'accès IA aux données sensibles via le Policy Engine.
-3. **Multi-Agent Asynchrone :** Notre broker d'événements permet de scaler à plus de 20+ agents parallèles qui communiquent par payload JSON typé. Le système ne s'effondre jamais, même face aux bases de code Big Tech les plus strictes.
+## 🛡️ NOTRE FOSSÉ (THE ENGINEERING MOAT)
+1. **Le Dernier Kilomètre (Binding Total) :** Contrairement aux assistants IA qui s'arrêtent au code, Amaswarn valide l'infrastructure, la CI, et la conformité sémantique.
+2. **Isolation Cognitive :** Notre Policy Engine est le seul capable d'isoler sémantiquement les contextes clients, garantissant qu'aucune donnée ne "fuit" entre deux exécutions d'agents.
+3. **L'Immunité Technologique :** Notre Playbook de résilience intégré nous permet de compiler des monorepos géants que les autres IA trouvent "trop complexes".
+
+---
+*Amaswarn — Construire le futur du logiciel en autonomie.*
