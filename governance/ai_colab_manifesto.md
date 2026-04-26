@@ -127,8 +127,7 @@ Pour qu'un projet IA ne se transforme pas en "code spaghetti", la progression do
 
 ---
 
-## 3. Regle d'Or de la Collaboration (The "Zero Emoji" Rule)
-1. **Penser (Vision)** -> 2. **Debattre (Catalogue)** -> 3. **Coder (Technique)** -> 4. **Prouver (Mapping)** -> 5. **Stabiliser (Playbook)** -> 6. **Archiver (Roadmap)**.
-Rien n'est considere termine tant que les 5 documents de gouvernance ne sont pas mis a jour de maniere synchrone.
-
-**THE DIRECTIVE**: L'ecrit professionnel doit rester industriel et epure. Zero emojis, jamais. Toute communication ou documentation echangee avec l'Humain doit etre depourvue d'artifices visuels de type emoji.
+## 3. Regles d'Or de la Collaboration
+1. **The Flow Rule** : 1. Penser (Vision) -> 2. Debattre (Catalogue) -> 3. Coder (Technique) -> 4. Prouver (Mapping) -> 5. Stabiliser (Playbook) -> 6. Archiver (Roadmap). Rien n'est considere termine tant que les 5 documents de gouvernance ne sont pas mis a jour de maniere synchrone.
+2. **Manual Commit Protocol (Sovereignty Rule)** : L'IA n'est pas autorisee a executer de `git commit` ou `git push` de maniere autonome. Chaque changement doit etre propose par l'IA, et la commande de commit/push reelle doit etre executee manuellement par le Lead Architect Humain dans son terminal. Cela garantit une validation humaine finale et une souverainete totale sur le depot.
+3. **The "Zero Emoji" Rule** : L'ecrit professionnel doit rester industriel et epure. Zero emojis, jamais. Toute communication ou documentation echangee avec l'Humain doit etre depourvue d'artifices visuels de type emoji.
