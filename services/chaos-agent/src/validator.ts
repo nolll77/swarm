@@ -1,7 +1,7 @@
 import { createLogger } from "@ai-dev/logger";
 import prisma from "@ai-dev/database";
 import { getEventBus } from "@ai-dev/events";
-import { TOPICS } from "@ai-dev/shared";
+import { TOPICS, toJsonSafe } from "@ai-dev/shared";
 import type { ChaosExperiment } from "./experiments";
 import type { ExecutionResult } from "./executor";
 
@@ -123,7 +123,7 @@ export async function validateRecovery(
       tenantId: "system",
       action: "chaos_experiment_validated",
       actor: "chaos-agent",
-      details: {
+      details: toJsonSafe({
         experimentId: experiment.id,
         experimentType: experiment.type,
         targetService: experiment.targetService,
@@ -135,7 +135,7 @@ export async function validateRecovery(
         dataIntegrity,
         mttrMs,
         findings,
-      },
+      }),
     },
   });
 

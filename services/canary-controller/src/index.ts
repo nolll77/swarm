@@ -92,9 +92,9 @@ async function start() {
             currentWeight,
             isHealthy: result.isHealthy,
             score: result.score,
-            reason: result.reason,
-            metrics: result.metrics
-          }
+            reason: result.reason ?? null,
+            metrics: result.metrics as unknown as Record<string, unknown>
+          } as unknown as Record<string, unknown>
         }
       });
 

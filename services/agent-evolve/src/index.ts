@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import cron from "node-cron";
 import { getEventBus } from "@ai-dev/events";
 import { createLogger } from "@ai-dev/logger";
-import { TOPICS } from "@ai-dev/shared";
+import { TOPICS, toJsonSafe } from "@ai-dev/shared";
 import prisma from "@ai-dev/database";
 import { analyzeFailurePatterns } from "./failure-analyzer";
 import { generateMutations, applyMutation } from "./mutation-engine";
@@ -116,7 +116,7 @@ async function runEvolutionCycle(): Promise<void> {
         tenantId: "system",
         action: "prompt_mutation_proposed",
         actor: "agent-evolve",
-        details: {
+        details: toJsonSafe({
           agentName: mutation.agentName,
           step: mutation.step,
           version: mutation.proposedVersion.version,
@@ -127,7 +127,7 @@ async function runEvolutionCycle(): Promise<void> {
           expectedImprovement: mutation.expectedImprovement,
           riskAssessment: mutation.riskAssessment,
           autoApplied: AUTO_APPLY_ENABLED && mutation.targetedPattern.severity === "critical",
-        },
+        }),
       },
     });
   }

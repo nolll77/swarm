@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import { getEventBus } from "@ai-dev/events";
 import { createLogger } from "@ai-dev/logger";
-import { TOPICS } from "@ai-dev/shared";
+import { TOPICS, toJsonSafe } from "@ai-dev/shared";
 import prisma from "@ai-dev/database";
 import { AccessEvaluator, AccessRequest, AccessResult } from "./evaluator";
 
@@ -48,11 +48,11 @@ async function start() {
           tenantId: req.tenantId,
           action: "rbac_evaluated",
           actor: req.userId,
-          details: {
+          details: toJsonSafe({
             permission: req.requiredPermission,
             granted: result.granted,
             reason: result.reason
-          }
+          })
         }
       });
 

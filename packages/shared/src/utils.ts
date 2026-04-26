@@ -54,3 +54,11 @@ export function nowISO(): string {
 export function elapsedMs(startTime: number): number {
   return Date.now() - startTime;
 }
+
+/**
+ * Converts any object to a Prisma-compatible JSON value.
+ * Use this when passing typed objects to Prisma's Json fields (e.g. details, output, metadata).
+ */
+export function toJsonSafe(value: unknown): Record<string, unknown> {
+  return JSON.parse(JSON.stringify(value ?? {})) as Record<string, unknown>;
+}

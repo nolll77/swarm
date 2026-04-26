@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import cron from "node-cron";
 import { getEventBus } from "@ai-dev/events";
 import { createLogger } from "@ai-dev/logger";
-import { TOPICS } from "@ai-dev/shared";
+import { TOPICS, toJsonSafe } from "@ai-dev/shared";
 import prisma from "@ai-dev/database";
 import { DependencyScanner } from "./scanner";
 import { PatchGenerator } from "./patcher";
@@ -49,7 +49,7 @@ async function start() {
                 tenantId: "system",
                 action: "vulnerability_detected",
                 actor: "auto-patcher",
-                details: { repoId, cve: vuln.id, package: vuln.package, severity: vuln.severity }
+                details: toJsonSafe({ repoId, cve: vuln.id, package: vuln.package, severity: vuln.severity })
               }
             });
 
