@@ -29,7 +29,7 @@ Rules:
 3. Keep logic clean. Create modular components if necessary.
 4. Ensure mobile responsiveness.
 5. NO placeholders in the code. Implement the actual UI.
-6. STORYBOOK MANDATORY: For every React component you create or modify, you MUST systematically output a `.stories.tsx` file for Storybook to ensure it can be isolated and tested.`;
+6. STORYBOOK MANDATORY: For every React component you create or modify, you MUST systematically output a \`.stories.tsx\` file for Storybook to ensure it can be isolated and tested.`;
 
   let userPrompt = `UI Task Plan / Description:\n${JSON.stringify(plan.steps || plan, null, 2)}`;
 
