@@ -30,7 +30,15 @@ The platform follows a distributed, event-driven microservices architecture:
 
 While the AI ecosystem favors Python for rapid prototyping, Amaswarn is built on a **Unified TypeScript Monorepo** for industrial stability. This ensures our 22-agent swarm operates as resilient microservices with end-to-end type safety, sharing a single source of truth across the entire platform. By leveraging Node.js's non-blocking I/O, our orchestrator manages hundreds of parallel agentic events simultaneously—handling the load where traditional Python-based scripts would hit concurrency bottlenecks (GIL).
 
-> <font size="4">Alors que l'écosystème de l'IA privilégie Python, Amaswarn repose sur un mono-repo écrit en TypeScript afin de privilégier la stabilité architecturale et la sécurité du typage. Ce choix garantit que notre essaim d'agents fonctionne comme des microservices résilients, partageant une source unique de vérité. En exploitant la gestion asynchrone massive de Node.js, l'orchestrateur agentique peut traiter plusieurs centaines d'événements en parallèle sans jamais bloquer, là où des scripts Python traditionnels atteindraient leurs limites de montée en charge (cf. GIL).</font>
+> <font size="4">Alors que l'écosystème IA, la tendance, "la hype" privilégient Python, Amaswarn repose sur un mono-repo écrit en TypeScript afin de privilégier la stabilité architecturale et la sécurité du typage.
+>
+> Ce choix garantit que notre essaim d'agents fonctionne comme des microservices résilients, partageant une source unique de vérité.
+>
+> En exploitant la gestion asynchrone massive de Node.js, l'orchestrateur agentique peut traiter plusieurs centaines d'événements en parallèle sans jamais bloquer, là où des scripts Python traditionnels atteindraient leurs limites de montée en charge (cf. GIL).</font>
+>
+> [What Is the Python Global Interpreter Lock?](https://realpython.com/python-gil/)
+>
+> [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)
 
 
 
@@ -62,7 +70,9 @@ Amaswarn is built with structural defensive barriers that distinguish it from st
 >   - à un audit RGPD ;
 >   - à des déploiements canary automatisés.
 > --> Nous ne nous contentons pas de faire des suggestions : nous fournissons des PR validées.
+>
 > - Le Control Moat (segmentation stratégique) : notre architecture « Policy Engine » garantit que l'IA n'accède jamais aux modules d'importance capitale et critiques (ex : authentification, facturation) sauf autorisation explicite, offrant ainsi le niveau de gouvernance requis par les secteurs réglementés.
+>
 > - Le Sovereignty Moat (priorité à la confidentialité) : l'isolation native des clients multiples et l'audit RGPD garantissent qu'aucune fuite de données ne se produit entre les clients, une exigence obligatoire pour le SaaS d'entreprise.</font>
 
 ## 5. Native Orchestration vs. AI Frameworks
@@ -75,13 +85,12 @@ Unlike typical AI projects, Amaswarn **does not use LangChain or LangGraph**. Th
 > <font size="4">Orchestration agentique native vs. Frameworks IA
 >
 > Contrairement aux projets d'IA classiques, Amaswarn n'utilise ni **LangChain ni LangGraph** ; en effet, il s'agit d'un choix technique délibéré visant à garantir **une fiabilité de niveau industriel** :
+>
 > - Traçabilité sans abstraction : l'intégration directe d'OpenAI offre une visibilité totale sur chaque charge utile, évitant ainsi le cauchemar d'un capharnaüm pour déboguer, préoccupation propre aux frameworks lourds.
+>
 > - Contrôle déterministe strict : les transitions de l'essaim multi-agents sont régies par une machine à états TypeScript (l'Orchestrateur), et non par un LLM autonome décidant de son propre chemin : cela évite les coûts d'API incontrôlés et des boucles infinies.
+>
 > - Évolutivité décentralisée : construits sur une architecture en Bus d'Événements pure, les agents agissent comme des microservices indépendants : cela permet un déploiement souverain où les agents sensibles (comme le RGPD) peuvent s'exécuter sur des clusters strictement localisés.</font>
->
-> [What Is the Python Global Interpreter Lock?](https://realpython.com/python-gil/)
->
-> [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)
 
 ## 6. The Agentic Workflow (Why it's not a Copilot)
 
@@ -109,7 +118,7 @@ To ensure the swarm understands the global context of a customer's codebase rath
 > - Requêtes sémantiques : les agents cognitifs (tels que le Coder-Agent) émettent des requêtes sur le bus d'événements (par exemple, « Comment ce tenant gère-t-il le formatage des dates ? ») et reçoivent des extraits de code correspondant précisément ainsi que des scores de similarité.
 > - Persistance modulaire : déployée en natif avec un InMemoryVectorStore pour un développement rapide, elle s'appuie sur des interfaces standardisées, prêtes à être instantanément remplacées par ChromaDB, Pinecone ou Weaviate pour une production d'entreprise à haute volumétrie.</font>
 
-## 8. The 22 Autonomous Agents Swarm
+## 8. The 22 Autonomous Agents Swarm (L'Essaim d'Agents Autonomes)
 
 To ensure strict security and prevent LLM hallucinations, the swarm is strictly divided into Cognitive (AI) and Deterministic (Code) agents.
 
