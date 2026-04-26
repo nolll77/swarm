@@ -14,11 +14,13 @@ The platform follows a distributed, event-driven microservices architecture:
 
 ## 2. The 22 Autonomous Agents
 
+To ensure strict security and prevent LLM hallucinations, the swarm is strictly divided into Cognitive (AI) and Deterministic (Code) agents.
+
+### Cognitive Agents (LLM-Driven)
+Execute probabilistic reasoning via Large Language Models.
+
 | Agent | Responsibility |
 |---|---|
-| Gateway-Agent | Ingress, authentication, and webhook management. |
-| Router-Agent | Automated triage, risk scoring, and budget enforcement. |
-| Orchestrator-Agent | Global state machine and cross-agent coordination. |
 | Planner-Agent | Generates technical implementation plans based on repository context. |
 | Coder-Agent | High-fidelity code generation and minimal diff production. |
 | Reviewer-Agent | Architectural audit, security scanning, and quality gate enforcement. |
@@ -26,6 +28,15 @@ The platform follows a distributed, event-driven microservices architecture:
 | SRE-Agent | Automated diagnostics, Root Cause Analysis (RCA), and post-mortems. |
 | Evolve-Agent | Meta-learning system that evolves agent prompts based on failure patterns. |
 | GDPR-Agent | Data protection audit (PII) and multi-tenant isolation compliance. |
+
+### Deterministic Agents (Code-Driven)
+Execute math, API routing, and infrastructure logic with 100% predictability (No AI).
+
+| Agent | Responsibility |
+|---|---|
+| Gateway-Agent | Ingress, authentication, and webhook management. |
+| Router-Agent | Automated triage, risk scoring, and budget enforcement. |
+| Orchestrator-Agent | Global state machine and cross-agent coordination. |
 | PR-Agent | Automated GitHub lifecycle management and branch orchestration. |
 | CI-Agent | Passive monitoring of build health and testing suites. |
 | Notify-Agent | Intelligent routing for Slack, Email, and Webhook notifications. |
