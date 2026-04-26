@@ -20,6 +20,24 @@ jobs:
 
       - name: Build all services (excluding dashboard)
         run: npm run build -- --filter=!dashboard
+        continue-on-error: true
+
+      - name: Debug - full tsc output on failure
+        if: always()
+        run: |
+          echo "=== FULL TSC DIAGNOSTICS ==="
+          for dir in services/*/; do
+            if [ -f "$dir/tsconfig.json" ]; then
+              echo ""
+              echo "--- $dir ---"
+              cd "$dir"
+              npx tsc --noEmit --pretty 2>&1 | head -50 || true
+              cd -
+            fi
+          done
+
+      - name: Fail if build failed
+        run: npm run build -- --filter=!dashboard
 
       - name: Run tests on all workspaces (excluding dashboard)
         run: npm test -- --filter=!dashboard

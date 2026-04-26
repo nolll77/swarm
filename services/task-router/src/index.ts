@@ -155,7 +155,7 @@ async function start() {
       });
 
       await eventBus.publish(TOPICS.TASK_ROUTED, tenantId, {
-        ...event.payload,
+        ...(event.payload as Record<string, unknown>),
         taskType,
         riskLevel,
       }, event.correlationId);
