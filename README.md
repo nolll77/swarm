@@ -77,10 +77,11 @@ Unlike typical AI projects, Amaswarn **does not use LangChain or LangGraph**. Th
 > Contrairement aux projets d'IA classiques, Amaswarn n'utilise ni **LangChain ni LangGraph** ; en effet, il s'agit d'un choix technique délibéré visant à garantir **une fiabilité de niveau industriel** :
 > - Traçabilité sans abstraction : l'intégration directe d'OpenAI offre une visibilité totale sur chaque charge utile, évitant ainsi le cauchemar d'un capharnaüm pour déboguer, préoccupation propre aux frameworks lourds.
 > - Contrôle déterministe strict : les transitions de l'essaim multi-agents sont régies par une machine à états TypeScript (l'Orchestrateur), et non par un LLM autonome décidant de son propre chemin : cela évite les coûts d'API incontrôlés et des boucles infinies.
-> - Évolutivité décentralisée : construits sur une architecture en Bus d'Événements pure, les agents agissent comme des microservices indépendants : cela permet un déploiement souverain où les agents sensibles (comme le RGPD) peuvent s'exécuter sur des clusters strictement localisés.
+> - Évolutivité décentralisée : construits sur une architecture en Bus d'Événements pure, les agents agissent comme des microservices indépendants : cela permet un déploiement souverain où les agents sensibles (comme le RGPD) peuvent s'exécuter sur des clusters strictement localisés.</font>
 >
-> [What Is the Python Global Interpreter Lock](https://realpython.com/python-gil/)
-> [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)</font>
+> [What Is the Python Global Interpreter Lock?](https://realpython.com/python-gil/)
+>
+> [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)
 
 ## 6. The Agentic Workflow (Why it's not a Copilot)
 
@@ -102,7 +103,7 @@ To ensure the swarm understands the global context of a customer's codebase rath
 - **Semantic Querying**: Cognitive agents (like the Coder-Agent) emit queries on the Event Bus (e.g., "How does this tenant handle date formatting?") and receive precisely matching code snippets and similarity scores.
 - **Pluggable Persistence**: Deployed natively with an `InMemoryVectorStore` for rapid development, built behind standard interfaces ready to be instantly swapped to **ChromaDB, Pinecone, or Weaviate** for high-volume enterprise production.
 
-> <font size="4">Pour s'assurer que l'essaim comprenne le contexte global du code d'un développeur plutôt que des fichiers isolés seuls et modifiés dans une PR, Amaswarn met en œuvre un microservice natif de génération augmentée par retrieval (**RAG**) :
+>  <font size="4">Pour s'assurer que l'essaim comprenne le contexte global du code d'un développeur plutôt que des fichiers isolés seuls et modifiés dans une PR, Amaswarn met en œuvre un microservice natif de génération augmentée par retrieval (**RAG**) :
 >
 > - Indexation du référentiel : écoute les événements d'indexation, découpe le code en segments et génère des vecteurs d'encodage (via l'API OpenAI).
 > - Requêtes sémantiques : les agents cognitifs (tels que le Coder-Agent) émettent des requêtes sur le bus d'événements (par exemple, « Comment ce tenant gère-t-il le formatage des dates ? ») et reçoivent des extraits de code correspondant précisément ainsi que des scores de similarité.
@@ -192,10 +193,10 @@ make deploy-staging
 
 Amaswarn is governed by a strict collaboration framework and a sovereign business strategy. Detailed models are available in the dedicated governance directory:
 
-- **[AI-Human Collaboration Manifesto](./governance/ai_colab_manifesto.md)**: Our core operational contract.
-- **[Expansion Roadmap](./governance/roadmap_expansion.md)**: Technical strategy for 100M ARR scale.
-- **[Business Case & Strategy](./governance/pitch_deck_notion.md)**: ROI analysis and market differentiation.
-- **[Monorepo Playbook](./governance/monorepo_playbook.md)**: Engineering resilience and CI/CD rules.
+- [AI-Human Collaboration Manifesto](./governance/ai_colab_manifesto.md): Our core operational contract.
+- [Expansion Roadmap](./governance/roadmap_expansion.md): Technical strategy for 100M ARR scale.
+- [Business Case & Strategy](./governance/pitch_deck_notion.md): ROI analysis and market differentiation.
+- [Monorepo Playbook](./governance/monorepo_playbook.md): Engineering resilience and CI/CD rules.
 
 ## 14. Licensing
 
@@ -205,11 +206,11 @@ Amaswarn is open-source software licensed under the **GNU Affero General Public 
 
 ## 15. Author & Project History
 
-- **Original Author & Lead Architect:** [Noël Ching](https://github.com/nolll77)
-- **Project Inception:** April 2026
-- **Vision:** To bridge the gap between autonomous AI reasoning and industrial-grade software reliability.
+- Original Author & Lead Architect: **[Noël Ching](https://github.com/nolll77)**
+- Project Inception: April 2026
+- Vision: To bridge the gap between autonomous AI reasoning and industrial-grade software reliability.
 
-**P.S. Project Status:** The core sovereign architecture and multi-agent swarm are now considered stable and complete. While an ambitious long-term [Expansion Roadmap](./governance/roadmap_expansion.md) exists, the project has reached its primary industrial objective and will remain in this stable state for the foreseeable future.
+P.S. Project Status: The core sovereign architecture and multi-agent swarm are now considered stable and complete. While an ambitious long-term [Expansion Roadmap](./governance/roadmap_expansion.md) exists, the project has reached its primary industrial objective and will remain in this stable state for the foreseeable future.
 
 ---
 
