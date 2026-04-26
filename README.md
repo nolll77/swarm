@@ -20,7 +20,7 @@ The platform follows a distributed, event-driven microservices architecture:
 - **Agent Swarm**: 22 specialized agents (Planner, Coder, Reviewer, SRE, GDPR, etc.) execute autonomous workflows.
 - **Persistence & Context**: PostgreSQL for metadata, Redis for event streaming, and Vector Memory (RAG) for long-term codebase understanding.
 
-> <font size="4">La plateforme repose sur une architecture de microservices distribuée et pilotée par les événements :<br><br>
+> <font size="4">La plateforme repose sur une architecture de microservices distribuée et pilotée par les événements :<br>
 > - Couche d'ingestion : API Gateway gère les webhooks GitHub et l'authentification des clients.<br>
 >    **↓**<br>
 > - Routing cognitif : Task Router classe les niveaux de risque et applique les limites de budget strictes.<br>
