@@ -4,6 +4,9 @@
 
 Amaswarn is an enterprise-grade AI software engineering platform that orchestrates a multi-agent swarm to transform GitHub issues into validated, production-ready pull requests. It is built on a sovereign infrastructure with strict security, compliance, and self-healing capabilities.
 
+*Amaswarn est une plateforme d'ingénierie logicielle IA de classe entreprise qui orchestre un essaim multi-agents pour transformer les tickets GitHub en pull requests validées et prêtes pour la production. Elle est bâtie sur une infrastructure souveraine avec une sécurité stricte, une conformité rigoureuse et des capacités d'auto-guérison.*
+
+
 ## 1. System Architecture
 
 The platform follows a distributed, event-driven microservices architecture:
@@ -18,7 +21,8 @@ The platform follows a distributed, event-driven microservices architecture:
 
 While the AI ecosystem favors Python for rapid prototyping, Amaswarn is built on a **Unified TypeScript Monorepo** to prioritize architectural stability and end-to-end type safety. This choice ensures that our 22-agent swarm operates as resilient, event-driven microservices rather than isolated scripts, sharing a single source of truth across the API, Swarm, and Dashboard. By leveraging Node.js as our high-concurrency backbone, we eliminate the runtime ambiguity of Python and ensure the platform is "Software Architect" grade (Production Ready), not just "Data Scientist" grade (Experimental).
 
-*Amaswarn privilégie la stabilité architecturale au prototypage rapide. En utilisant un Monorepo TypeScript, nous éliminons l'ambiguïté du Python pour garantir que notre essaim d'agents fonctionne comme des microservices résilients, et non comme de simples scripts. C'est le passage du grade "Data Scientist" (Expérimental) au grade "Software Architect" (Prêt pour la Production).*
+*Amaswarn privilégie la stabilité architecturale au prototypage rapide. En utilisant un Monorepo TypeScript, nous éliminons l'ambiguïté du Python pour garantir que notre essaim d'agents fonctionne comme des microservices résilients, et non comme de simples scripts. C'est le passage du niveau "Data Scientist" (Expérimental) au niveau "Software Architect" (Prêt pour la Production).*
+
 
 ## 3. Sovereignty by Design
 
@@ -159,7 +163,8 @@ Amaswarn is open-source software licensed under the **GNU Affero General Public 
 **P.S. Project Status:** The core sovereign architecture and multi-agent swarm are now considered stable and complete. While an ambitious long-term [Expansion Roadmap](./governance/roadmap_expansion.md) exists, the project has reached its primary industrial objective and will remain in this stable state for the foreseeable future.
 
 ---
-Sovereignty by Design.
+Sovereignty by Design
+
 
 
 
