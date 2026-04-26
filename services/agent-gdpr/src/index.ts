@@ -13,20 +13,28 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 async function analyzeCompliance(diff: string): Promise<{
   safe: boolean;
-  issues: string[];
+  issues: { severity: string; description: string; remediation: string }[];
   score: number;
 }> {
-  const systemPrompt = `You are a strict GDPR & Security Compliance Auditor for a SaaS platform.
-Your job is to analyze the provided git diff and detect any compliance or security issues.
-Specifically, look for:
-1. PII exposure (Emails, Phone numbers, SSNs, Credit Cards) in plain text or logs.
-2. Missing tenantId segregation in database models (Prisma schema changes).
+  const systemPrompt = `You are a strict European Data Sovereignty & GDPR Compliance Auditor for a B2B Enterprise SaaS.
+Your job is to analyze the provided git diff and detect any compliance or security vulnerabilities.
+Critically evaluate the code against these 4 pillars:
+1. PII Exposure: Ensure no Emails, Phone numbers, SSNs, or Credit Cards can be logged or stored in plain text.
+2. Tenant Isolation (Privacy by Design): Any Prisma schema or database query MUST include 'tenantId' segregation.
+3. Data Sovereignty: Detect any HTTP/API calls sending data to unauthorized 3rd-party services outside the EU.
+4. Secret Leakage: Prevent hardcoded API keys, tokens, or passwords.
 
 Respond ONLY with a valid JSON object matching this schema:
 {
-  "safe": boolean,
-  "issues": string[], // Descriptions of issues. Empty if safe.
-  "score": number // 0-100, 100 is perfectly safe.
+  "safe": boolean, // False if ANY issue of severity 'high' or 'critical' is found
+  "score": number, // 0-100 (100 = perfectly safe, -20 per high issue, -10 per medium)
+  "issues": [
+    {
+      "severity": "low" | "medium" | "high" | "critical",
+      "description": "Clear explanation of the sovereignty or privacy breach",
+      "remediation": "How the agent should fix the code (e.g., 'Use Hash() for password', 'Add tenantId to where clause')"
+    }
+  ]
 }`;
 
   try {
@@ -50,7 +58,11 @@ Respond ONLY with a valid JSON object matching this schema:
     };
   } catch (err) {
     logger.error("Failed to analyze compliance using LLM", { error: err instanceof Error ? err.message : String(err) });
-    return { safe: false, issues: ["Failed to analyze compliance"], score: 0 };
+    return { 
+      safe: false, 
+      issues: [{ severity: "critical", description: "Compliance Engine Failure", remediation: "Check OpenAI API keys and network." }], 
+      score: 0 
+    };
   }
 }
 
