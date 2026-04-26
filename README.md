@@ -1,4 +1,6 @@
 # Amaswarn: Autonomous AI Engineering Platform
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
 
 Amaswarn is an enterprise-grade AI software engineering platform that orchestrates a multi-agent swarm to transform GitHub issues into validated, production-ready pull requests. It is built on a sovereign infrastructure with strict security, compliance, and self-healing capabilities.
 
@@ -11,22 +13,37 @@ The platform follows a distributed, event-driven microservices architecture:
 - **Swarm Orchestration**: The Global Orchestrator manages the asynchronous state machine for task execution.
 - **Agent Swarm**: 22 specialized agents (Planner, Coder, Reviewer, SRE, GDPR, etc.) execute autonomous workflows.
 - **Persistence & Context**: PostgreSQL for metadata, Redis for event streaming, and Vector Memory (RAG) for long-term codebase understanding.
+- **Persistence & Context**: PostgreSQL for metadata, Redis for event streaming, and Vector Memory (RAG) for long-term codebase understanding.
 
-## 2. The Agentic Workflow (Why it's not a Copilot)
+## 2. Competitive Moats (Why we win)
+
+Amaswarn is built with structural defensive barriers that distinguish it from standard AI assistants:
+1. **The Binding Moat (End-to-End)**: While others just write code, Amaswarn is the only platform that binds code generation to **real CI validation, GDPR audit, and automated canary rollouts**. We don't just suggest; we deliver validated PRs.
+2. **The Control Moat (Strategic Isolation)**: Our "Policy Engine" architecture ensures that AI never touches critical core modules (Auth, Billing) unless explicitly allowed, offering the governance level required by regulated industries.
+3. **The Sovereignty Moat (Privacy-First)**: Native multi-tenant isolation and EU-centric GDPR auditing ensure data never leaks between tenants, a mandatory requirement for Enterprise SaaS.
+
+## 3. Native Orchestration vs. AI Frameworks
+
+Unlike typical AI projects, Amaswarn **does not use LangChain or LangGraph**. This is a deliberate engineering choice to ensure industrial-grade reliability:
+1. **Zero-Abstraction Traceability**: Direct OpenAI integration allows 100% visibility into every payload, avoiding the "black box" debugging nightmare of heavy frameworks.
+2. **Strict Deterministic Control**: The swarm's transitions are governed by a TypeScript state machine (The Orchestrator), not by an autonomous LLM deciding its own path. This prevents uncontrolled API costs and infinite loops.
+3. **Decentralized Scaling**: Built on a pure Event-Bus architecture, agents act as independent microservices. This allows for sovereign deployment where sensitive agents (like GDPR) can run on strictly localized clusters.
+
+## 4. The Agentic Workflow (Why it's not a Copilot)
 
 Amaswarn is a true **Agentic AI** system. Unlike passive Generative AI that only responds to immediate human prompts, Amaswarn possesses autonomous agency:
 1. **Asynchronous Initiative**: Agents wake up autonomously based on cluster events (e.g., CI failures immediately trigger the SRE-Agent).
 2. **Tool Calling & Execution**: The cognitive layer does not just generate text; it requests terminal execution, inspects logs, and interacts with GitHub APIs.
 3. **Iterative Self-Correction**: The swarm functions in a closed loop. If the Reviewer-Agent detects a flaw in the Coder-Agent's output, it routes the task back for correction without requiring human supervision.
 
-## 3. Long-Term Vector Memory (RAG)
+## 5. Long-Term Vector Memory (RAG)
 
 To ensure the swarm understands the global context of a customer's codebase rather than just the isolated files modified in a PR, Amaswarn implements a native Retrieval-Augmented Generation (RAG) microservice (`services/vector-memory`):
 1. **Repository Indexing**: Listens to indexing events, chunks the codebase, and generates Vector Embeddings (via OpenAI).
 2. **Semantic Querying**: Cognitive agents (like the Coder-Agent) emit queries on the Event Bus (e.g., "How does this tenant handle date formatting?") and receive precisely matching code snippets and similarity scores.
 3. **Pluggable Persistence**: Deployed natively with an `InMemoryVectorStore` for rapid development, built behind standard interfaces ready to be instantly swapped to **ChromaDB, Pinecone, or Weaviate** for high-volume enterprise production.
 
-## 4. The 22 Autonomous Agents
+## 6. The 22 Autonomous Agents Swarm
 
 To ensure strict security and prevent LLM hallucinations, the swarm is strictly divided into Cognitive (AI) and Deterministic (Code) agents.
 
@@ -113,6 +130,18 @@ Amaswarn is governed by a strict collaboration framework and a sovereign busines
 - **[Expansion Roadmap](./governance/roadmap_expansion.md)**: Technical strategy for 100M ARR scale.
 - **[Business Case & Strategy](./governance/pitch_deck_notion.md)**: ROI analysis and market differentiation.
 - **[Monorepo Playbook](./governance/monorepo_playbook.md)**: Engineering resilience and CI/CD rules.
+
+## 10. Licensing
+
+Amaswarn is open-source software licensed under the **GNU Affero General Public License v3.0**. 
+
+**Important for SaaS providers:** In accordance with the AGPL-3.0 terms, if you modify this software and run it as a network service, you MUST make your source code available to your users. See the [LICENSE](./LICENSE) and [NOTICE](./NOTICE) files for details.
+
+## 11. Author & Project History
+
+- **Original Author & Lead Architect:** [Noël Ching](https://github.com/nolll77)
+- **Project Inception:** April 2026
+- **Vision:** To bridge the gap between autonomous AI reasoning and industrial-grade software reliability.
 
 ---
 End of Industrial Documentation.

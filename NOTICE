@@ -1,0 +1,17 @@
+# NOTICE - Amaswarn Project
+
+Copyright (c) 2026 Noël Ching. All rights reserved.
+
+## Original Authorship
+Amaswarn is an original work developed as a sovereign multi-agent engineering platform. The architecture, including the 22-agent swarm, the deterministic state machine, and the sovereign GDPR auditor, are intellectual property of the author.
+
+## Licensing
+This software is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. 
+
+### Mandatory Attribution
+Any redistribution, modification, or derivative work of Amaswarn MUST:
+1. Retain the original copyright notice and this NOTICE file.
+2. Provide a visible and clickable link to the original repository (https://github.com/nolll77/swarm) in the user interface of any derived work or service.
+
+## Network Service Provision
+Under the terms of the AGPL-3.0, if you modify Amaswarn and run it as a network service (SaaS), you are LEGALLY OBLIGATED to make the source code of your modified version available to all users interacting with your service.
