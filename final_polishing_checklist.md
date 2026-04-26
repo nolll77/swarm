@@ -31,5 +31,7 @@ Ce document trace les dernières étapes nécessaires pour finaliser la transiti
 ---
 
 ## État actuel du Cleanup
-- **Statut :** Formellement Complété.
-- **Prochaine action :** Le dépôt est propre, prêt pour un premier déploiement K8s ou l'ajout du module de monétisation Stripe.
+- **Statut :** Formellement Complété (Backend et Frontend CI au vert).
+- **Prochaines actions techniques (TODO) :**
+  - [ ] **Validation UI :** Tester visuellement le Dashboard Vite en local (`npm run dev --workspace=dashboard`) et ajuster les finitions front-end.
+  - [ ] **Déploiement Cloud :** Finaliser les manifestes d'infrastructure AWS ECS (`infra/aws/ecs.tf`) et injecter les secrets réels de production dans GitHub Actions.

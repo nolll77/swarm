@@ -1,21 +1,22 @@
-# AMASWARN — Engineering Intelligence Platform (SaaS B2B)
+# AMASWARN — Sovereign Engineering Intelligence (Enterprise SaaS)
 
-> "Transformez vos GitHub Issues en Pull Requests validées avec une automation CI-Safe."
-
----
-
-## LA PROMESSE PRODUIT
-Amaswarn n'est pas un assistant de code. C'est une usine logicielle autonome contrôlée.
-- Issue-to-PR : 50-80% des tickets techniques résolus sans intervention humaine.
-- Self-Healing CI : Correction automatique des échecs de builds et de tests par l'IA.
-- Elite Quality Gates : Revues d'architecture automatiques remplaçant 60% des reviews humaines.
+> **"Transformez vos GitHub Issues en Pull Requests certifiées, validées par un essaim de 22 micro-agents spécialisés, sous conformité RGPD."**
 
 ---
 
-## L'ARCHITECTURE (PRODUCTION-READY)
-- Multi-Agent Swarm : Un essaim d'agents spécialisés (Coder, Reviewer, SRE) orchestré par une machine d'état.
-- Governance Policy Engine : Contrôle total sur ce que l'IA peut modifier et fusionner (Isolation Auth/Billing).
-- Multi-Tenant Isolation : Architecture conçue pour le Cloud SaaS avec isolation stricte des données clients (SOC2/RGPD).
+## LA PROMESSE PRODUIT (Au-delà du Copilot)
+Amaswarn n'est pas un assistant de code. C'est une usine logicielle autonome, souveraine et contrainte par le risque.
+- **Issue-to-Merged :** 50-80% des tickets techniques résolus et testés *end-to-end* sans intervention humaine.
+- **Self-Healing CI :** L'Agent SRE diagnostique (analyse TSC, logs GitHub Actions) et corrige les builds cassés en autonomie.
+- **Compliance-by-Design :** Revue d'architecture automatique par l'Agent RGPD (via LLM OpenAI structurés) remplaçant 60% des audits humains et bloquant les fuites de PII en temps réel.
+
+---
+
+## L'ARCHITECTURE (THE 22-MICROSERVICES SWARM)
+Nous avons prouvé la scalabilité : l'architecture repose sur un Monorepo Turborepo stabilisé avec un CI/CD Zero-Error.
+- **Multi-Agent Orchestrator :** Machine d'état pilotée par événements (Redis/EventBus) orchestrant l'Agent Coder, l'Agent UI, et l'Agent GDPR.
+- **Governance Policy Engine :** Typage strict (Prisma, TypeScript itérateurs) empêchant mathématiquement l'IA de corrompre les bases de données (isolation `tenantId`).
+- **Canary & Chaos Rollouts :** L'orchestrateur abstrait l'infrastructure (AWS ECS) pour des déploiements progressifs où l'IA surveille elle-même ses propres régressions.
 
 ---
 
@@ -26,14 +27,14 @@ Amaswarn n'est pas un assistant de code. C'est une usine logicielle autonome con
 
 ---
 
-## ROI CLIENT (POURQUOI ILS ACHÈTENT)
-1. Vélocité : Réduction du cycle de vie des tickets de 3 jours à 15 minutes.
-2. Coût : Réduction du coût "Engineering hour" sur les tâches répétitives (CRUD, bug fixes).
-3. Qualité : Adoption systématique des standards d'élite sans effort managérial.
+## ROI CLIENT (POURQUOI L'ENTREPRISE ACHÈTE)
+1. **Vélocité SRE :** Réduction du cycle de vie des tickets et de récupération CI de 3 jours à 15 minutes.
+2. **Réduction des Coûts :** L'ingénierie de "plomberie" (CRUD, dépendances, fix de TSConfig) est totalement déchargée sur le Swarm.
+3. **Audits Automatisés :** La conformité RGPD et SOC2 n'est plus un goulot d'étranglement de fin de sprint, c'est une barrière CI automatisée à chaque commit.
 
 ---
 
-## NOTRE FOSSÉ (THE MOAT)
-1. Policy Engine Propriétaire : Seul système capable d'interdire l'accès IA aux modules critiques (Auth/Billing).
-2. Apprentissage Local : Le Swarm apprend les conventions spécifiques de chaque repository client.
-3. Intégration Native CI/CD : Pas de changement de workflow ; nous sommes dans GitHub, point final.
+## NOTRE FOSSÉ (THE ENGINEERING MOAT)
+1. **Dernier Kilomètre (End-to-End Binding) :** Là où Devin hallucine de l'abstraction, Amaswarn génère la Pull Request, passe les tests CI Turborepo, audite avec l'Agent RGPD, et propose un merge safe.
+2. **Conformité Souveraine Native :** L'unique architecture IA incluant une isolation sémantique des tenants, bloquant l'accès IA aux données sensibles via le Policy Engine.
+3. **Multi-Agent Asynchrone :** Notre broker d'événements permet de scaler à plus de 20+ agents parallèles qui communiquent par payload JSON typé. Le système ne s'effondre jamais, même face aux bases de code Big Tech les plus strictes.
