@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import OpenAI from "openai";
 import { getEventBus } from "@ai-dev/events";
 import { createLogger } from "@ai-dev/logger";
 import { TOPICS } from "@ai-dev/shared";
@@ -7,35 +8,50 @@ dotenv.config();
 
 const logger = createLogger("agent-gdpr");
 const eventBus = getEventBus();
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
 
 async function analyzeCompliance(diff: string): Promise<{
   safe: boolean;
   issues: string[];
   score: number;
 }> {
-  const issues: string[] = [];
-  
-  // Simulated Regex/Heuristic Checks (In prod, this would be an LLM call)
-  const piiPatterns = [
-    { name: "Email", regex: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g },
-    { name: "Phone", regex: /\+?[0-9]{10,15}/g },
-    { name: "Credit Card", regex: /[0-9]{13,16}/g }
-  ];
+  const systemPrompt = `You are a strict GDPR & Security Compliance Auditor for a SaaS platform.
+Your job is to analyze the provided git diff and detect any compliance or security issues.
+Specifically, look for:
+1. PII exposure (Emails, Phone numbers, SSNs, Credit Cards) in plain text or logs.
+2. Missing tenantId segregation in database models (Prisma schema changes).
 
-  for (const pattern of piiPatterns) {
-    if (pattern.regex.test(diff)) {
-      issues.push(`PII Detected: Potential ${pattern.name} leak in plain text.`);
-    }
+Respond ONLY with a valid JSON object matching this schema:
+{
+  "safe": boolean,
+  "issues": string[], // Descriptions of issues. Empty if safe.
+  "score": number // 0-100, 100 is perfectly safe.
+}`;
+
+  try {
+    const response = await openai.chat.completions.create({
+      model: process.env.AI_MODEL || "gpt-4o",
+      temperature: 0.1,
+      response_format: { type: "json_object" },
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: `Analyze this diff:\n\n${diff}` },
+      ],
+    });
+
+    const content = response.choices[0].message.content || "{}";
+    const result = JSON.parse(content);
+    
+    return {
+      safe: typeof result.safe === "boolean" ? result.safe : true,
+      issues: Array.isArray(result.issues) ? result.issues : [],
+      score: typeof result.score === "number" ? result.score : 100,
+    };
+  } catch (err) {
+    logger.error("Failed to analyze compliance using LLM", { error: err instanceof Error ? err.message : String(err) });
+    return { safe: false, issues: ["Failed to analyze compliance"], score: 0 };
   }
-
-  if (diff.includes("Prisma.defineModel") && !diff.includes("tenantId")) {
-    issues.push("Missing tenantId: Data isolation breach in database schema.");
-  }
-
-  const safe = issues.length === 0;
-  const score = safe ? 100 : Math.max(0, 100 - issues.length * 25);
-
-  return { safe, issues, score };
 }
 
 async function start() {
