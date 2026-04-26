@@ -36,9 +36,9 @@ The platform follows a distributed, event-driven microservices architecture:
 
 While the AI ecosystem favors Python for rapid prototyping, Amaswarn is built on a **Unified TypeScript Monorepo** for industrial stability. This ensures our 22-agent swarm operates as resilient microservices with end-to-end type safety, sharing a single source of truth across the entire platform. By leveraging Node.js's non-blocking I/O, our orchestrator manages hundreds of parallel agentic events simultaneously—handling the load where traditional Python-based scripts would hit concurrency bottlenecks (GIL).
 
-> <font size="4">Alors que l'écosystème IA, la tendance, "la hype" privilégient Python, Amaswarn repose sur un mono-repo écrit en TypeScript afin de privilégier la stabilité architecturale et la sécurité du typage.
+> <font size="4">Alors que l'écosystème IA, la tendance, 'la hype' privilégient Python, Amaswarn repose sur un mono-repo écrit en TypeScript afin de privilégier la stabilité architecturale et la sécurité du typage.
 >
-> Cette approche garantit que notre essaim d'agents fonctionne comme des microservices résilients, partageant une source unique de vérité.
+> Cette approche industrielle garantit que notre essaim d'agents fonctionne comme des microservices résilients, partageant une source unique de vérité.
 >
 > En exploitant la gestion asynchrone massive de Node.js, l'orchestrateur agentique peut traiter plusieurs centaines d'événements en parallèle sans jamais bloquer, là où des scripts Python traditionnels atteindraient leurs limites de montée en charge (cf. GIL).</font>
 >
@@ -130,7 +130,7 @@ To ensure the swarm understands the global context of a customer's codebase rath
 >
 > - Persistance modulaire : déployée en natif avec un InMemoryVectorStore pour un développement rapide, elle s'appuie sur des interfaces standardisées, prêtes à être instantanément remplacées par ChromaDB, Pinecone ou Weaviate pour une production d'entreprise à haute volumétrie.</font>
 
-## 8. The 22 Autonomous Agents Swarm (l'Essaim d'agents)
+## 8. The 22 Autonomous Agents Swarm (l'**Essaim** d'agents)
 
 To ensure strict security and prevent LLM hallucinations, the swarm is strictly divided into Cognitive (AI) and Deterministic (Code) agents.
 
