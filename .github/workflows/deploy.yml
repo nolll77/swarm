@@ -18,9 +18,8 @@ jobs:
           cache: 'npm'
       - run: npm install
 
-      - name: Build all services (excluding dashboard)
-        run: npm run build -- --filter=!dashboard
-        continue-on-error: true
+      - name: Build all services
+        run: npm run build
 
       - name: Debug - full tsc output on failure
         if: always()
@@ -37,10 +36,10 @@ jobs:
           done
 
       - name: Fail if build failed
-        run: npm run build -- --filter=!dashboard
+        run: npm run build
 
-      - name: Run tests on all workspaces (excluding dashboard)
-        run: npm test -- --filter=!dashboard
+      - name: Run tests on all workspaces
+        run: npm test
 
   deploy-dev:
     needs: test
