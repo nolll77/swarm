@@ -48,16 +48,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure AWS Credentials (Dev)
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_DEV }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_DEV }}
-          aws-region: eu-west-3
+      - name: Mock AWS Configuration (Dev)
+        run: echo "Skipped AWS configure: AWS_ACCESS_KEY_ID_DEV not yet set in Github Secrets"
       - name: Deploy to ECS (Dev Cluster)
         run: |
-          echo "Deploying to Dev environment using Multi-account strategy..."
-          # Logic to update ECS services via Terraform or CLI
+          echo "Deploying to Dev environment using Multi-account strategy (MOCKED)..."
 
   deploy-prod:
     needs: deploy-dev
@@ -65,12 +60,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure AWS Credentials (Prod)
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
-          aws-region: eu-west-3
+      - name: Mock AWS Configuration (Prod)
+        run: echo "Skipped AWS configure: AWS_ACCESS_KEY_ID_PROD not yet set in Github Secrets"
       - name: Deploy to ECS (Prod Cluster)
         run: |
-          echo "Deploying to Prod environment across dedicated AWS account..."
+          echo "Deploying to Prod environment across dedicated AWS account (MOCKED)..."
