@@ -49,10 +49,9 @@ Unlike typical AI projects, Amaswarn **does not use LangChain or LangGraph**. Th
 - **Decentralized Scaling**: Built on a pure Event-Bus architecture, agents act as independent microservices. This allows for sovereign deployment where sensitive agents (like GDPR) can run on strictly localized clusters.
 
 *Orchestration agentique native vs. Frameworks IA*
-
-*Contrairement aux projets d'IA classiques, Amaswarn n'utilise ni LangChain ni LangGraph ; en effet, il s'agit d'un choix technique délibéré visant à garantir une fiabilité de niveau industriel :*
-*- Traçabilité sans abstraction : l'intégration directe d'OpenAI offre une visibilité totale sur chaque charge utile, évitant ainsi le cauchemar du débogage en « boîte noire » propre aux frameworks lourds.*
-*- Contrôle déterministe strict : les transitions de l'essaim multi-agents sont régies par une machine à états TypeScript (l'Orchestrateur), et non par un LLM autonome décidant de son propre chemin : cela évite les coûts d'API incontrôlés et des boucles infinies.*
+*Contrairement aux projets d'IA classiques, Amaswarn n'utilise ni LangChain ni LangGraph ; en effet, il s'agit d'un choix technique délibéré visant à garantir une fiabilité de niveau industriel :*<br>
+*- Traçabilité sans abstraction : l'intégration directe d'OpenAI offre une visibilité totale sur chaque charge utile, évitant ainsi le cauchemar du débogage en « boîte noire » propre aux frameworks lourds.*<br>
+*- Contrôle déterministe strict : les transitions de l'essaim multi-agents sont régies par une machine à états TypeScript (l'Orchestrateur), et non par un LLM autonome décidant de son propre chemin : cela évite les coûts d'API incontrôlés et des boucles infinies.*<br>
 *- Évolutivité décentralisée : construits sur une architecture en Bus d'Événements pure, les agents agissent comme des microservices indépendants : cela permet un déploiement souverain où les agents sensibles (comme le RGPD) peuvent s'exécuter sur des clusters strictement localisés.*
 
 ## 6. The Agentic Workflow (Why it's not a Copilot)
