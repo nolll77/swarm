@@ -4,7 +4,9 @@
 
 Amaswarn is an enterprise-grade AI software engineering platform that orchestrates a multi-agent swarm to transform GitHub issues into validated, production-ready pull requests. It is built on a sovereign infrastructure with strict security, compliance, and self-healing capabilities.
 
-> <font size="4">Amaswarn est une plateforme d'ingénierie logicielle basée sur l'IA destinée aux entreprises, qui coordonne un essaim multi-agents afin de transformer les tickets GitHub en pull requests validées et prêtes à être déployées en production. Amaswarn repose sur une infrastructure souveraine dotée de capacités rigoureuses en matière de sécurité, de conformité et d'auto-réparation.</font>
+> <font size="4">Amaswarn est une plateforme d'ingénierie logicielle basée sur l'IA destinée aux entreprises, qui coordonne un essaim multi-agents afin de transformer les tickets GitHub en pull requests validées et prêtes à être déployées en production.
+>
+> Amaswarn repose sur une infrastructure souveraine dotée de capacités rigoureuses en matière de sécurité, de conformité et d'auto-réparation.</font>
 
 
 
@@ -21,9 +23,13 @@ The platform follows a distributed, event-driven microservices architecture:
 > <font size="4">La plateforme repose sur une architecture de microservices distribuée et pilotée par les événements :
 >
 > - Couche d'ingestion : API Gateway gère les webhooks GitHub et l'authentification des clients.
+>
 > - Routing cognitif : Task Router classe les niveaux de risque et applique les limites de budget strictes.
+>
 > - Orchestration Agentique : Global Orchestrator gère la machine à états asynchrone pour l'exécution des tâches.
+>
 > - Agent Swarm : 22 agents spécialisés (Planner, Coder, Reviewer, SRE, GDPR, etc.) exécutent des workflows indépendants et autonomes.
+>
 > - Persistance et contexte : PostgreSQL pour les métadonnées, Redis pour le streaming d'événements, la base de donnée vectorielle (RAG) pour la compréhension long terme du code source du projet.</font>
 
 ## 2. Technical Stack: Industrial-Grade TypeScript
@@ -36,9 +42,9 @@ While the AI ecosystem favors Python for rapid prototyping, Amaswarn is built on
 >
 > En exploitant la gestion asynchrone massive de Node.js, l'orchestrateur agentique peut traiter plusieurs centaines d'événements en parallèle sans jamais bloquer, là où des scripts Python traditionnels atteindraient leurs limites de montée en charge (cf. GIL).</font>
 >
-> [What Is the Python Global Interpreter Lock?](https://realpython.com/python-gil/)
+> <font size="3">[What Is the Python Global Interpreter Lock?](https://realpython.com/python-gil/)
 >
-> [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)
+> [Décryptage du Global Interpreter Lock](https://datascientist.fr/blog/tutoriel-python-decryptage-du-global-interpreter-lock-gil)</font>
 
 
 
