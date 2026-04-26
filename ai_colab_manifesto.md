@@ -33,9 +33,9 @@ C'est le pendant direct de l'hallucination par abstraction. L'IA excelle a const
 
 ---
 
-## 2. Le Framework des 4 Documents de Gouvernance (Templates)
+## 2. Le Framework des 5 Documents de Gouvernance (Templates)
 
-Pour qu'un projet IA ne se transforme pas en "code spaghetti", la progression doit etre ancree dans 4 documents immuables. Ils garantissent que l'IA ne perd jamais son contexte et que l'Humain sait exactement ce qui a ete fait.
+Pour qu'un projet IA ne se transforme pas en "code spaghetti", la progression doit etre ancree dans 5 documents immuables. Ils garantissent que l'IA ne perd jamais son contexte et que l'Humain sait exactement ce qui a ete fait.
 
 ### Doc 1 : roadmap_expansion.md (Le Plan Strategique)
 **But :** Suivre l'integrite de l'architecture et l'avancement macroscopique.
@@ -119,10 +119,16 @@ Pour qu'un projet IA ne se transforme pas en "code spaghetti", la progression do
 > CRITICAL: Error detected ...
 ```
 
+### Doc 5 : monorepo_playbook.md (Le Guide de Survie CI/CD)
+**But :** Éviter à l'IA et à l'Humain de retomber dans les pièges classiques de l'architecture monorepo (Typescript strict, Prisma JSON, GitHub Actions YAML, etc.).
+**Quand le mettre a jour :** Chaque fois qu'un obstacle technique majeur et non-spécifique au métier est surmonté.
+
+> [Voir le Playbook complet (docs/monorepo_playbook.md)](./docs/monorepo_playbook.md)
+
 ---
 
 ## 3. Regle d'Or de la Collaboration (The "Zero Emoji" Rule)
-1. **Penser (Vision)** -> 2. **Debattre (Catalogue)** -> 3. **Coder (Technique)** -> 4. **Prouver (Mapping)** -> 5. **Archiver (Roadmap)**.
-Rien n'est considere termine tant que les 4 documents de gouvernance ne sont pas mis a jour de maniere synchrone.
+1. **Penser (Vision)** -> 2. **Debattre (Catalogue)** -> 3. **Coder (Technique)** -> 4. **Prouver (Mapping)** -> 5. **Stabiliser (Playbook)** -> 6. **Archiver (Roadmap)**.
+Rien n'est considere termine tant que les 5 documents de gouvernance ne sont pas mis a jour de maniere synchrone.
 
 **THE DIRECTIVE**: L'ecrit professionnel doit rester industriel et epure. Zero emojis, jamais. Toute communication ou documentation echangee avec l'Humain doit etre depourvue d'artifices visuels de type emoji.
