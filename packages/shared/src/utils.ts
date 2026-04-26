@@ -59,6 +59,6 @@ export function elapsedMs(startTime: number): number {
  * Converts any object to a Prisma-compatible JSON value.
  * Use this when passing typed objects to Prisma's Json fields (e.g. details, output, metadata).
  */
-export function toJsonSafe(value: unknown): Record<string, unknown> {
-  return JSON.parse(JSON.stringify(value ?? {})) as Record<string, unknown>;
+export function toJsonSafe(value: unknown): any {
+  return JSON.parse(JSON.stringify(value ?? {}));
 }
