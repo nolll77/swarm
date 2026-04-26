@@ -19,7 +19,14 @@ Amaswarn is a true **Agentic AI** system. Unlike passive Generative AI that only
 2. **Tool Calling & Execution**: The cognitive layer does not just generate text; it requests terminal execution, inspects logs, and interacts with GitHub APIs.
 3. **Iterative Self-Correction**: The swarm functions in a closed loop. If the Reviewer-Agent detects a flaw in the Coder-Agent's output, it routes the task back for correction without requiring human supervision.
 
-## 3. The 22 Autonomous Agents
+## 3. Long-Term Vector Memory (RAG)
+
+To ensure the swarm understands the global context of a customer's codebase rather than just the isolated files modified in a PR, Amaswarn implements a native Retrieval-Augmented Generation (RAG) microservice (`services/vector-memory`):
+1. **Repository Indexing**: Listens to indexing events, chunks the codebase, and generates Vector Embeddings (via OpenAI).
+2. **Semantic Querying**: Cognitive agents (like the Coder-Agent) emit queries on the Event Bus (e.g., "How does this tenant handle date formatting?") and receive precisely matching code snippets and similarity scores.
+3. **Pluggable Persistence**: Deployed natively with an `InMemoryVectorStore` for rapid development, built behind standard interfaces ready to be instantly swapped to **ChromaDB, Pinecone, or Weaviate** for high-volume enterprise production.
+
+## 4. The 22 Autonomous Agents
 
 To ensure strict security and prevent LLM hallucinations, the swarm is strictly divided into Cognitive (AI) and Deterministic (Code) agents.
 
@@ -57,7 +64,7 @@ Execute math, API routing, and infrastructure logic with 100% predictability (No
 | RBAC-Agent | Granular access control and agent privilege governance. |
 | Patch-Agent | Proactive vulnerability correction and CVE remediation. |
 
-## 4. Sovereign Deployment & Infrastructure
+## 5. Sovereign Deployment & Infrastructure
 
 Amaswarn is designed for total infrastructure sovereignty. The entire stack is provisioned as code:
 
@@ -66,20 +73,20 @@ Amaswarn is designed for total infrastructure sovereignty. The entire stack is p
 - **Multi-Tenant Isolation**: Hard isolation at the database, event bus, and network layers per tenant.
 - **Cloud Agnostic**: Support for AWS, GCP, and Azure through the Multi-Cloud Controller factory.
 
-## 5. Security & Compliance
+## 6. Security & Compliance
 
 - **SOC2 Ready**: Automated audit trails, immutable logging, and RBAC governance.
 - **GDPR Compliant**: Explicit PII detection and autonomous data isolation enforcement.
 - **Zero Trust**: Every internode communication is authenticated; secrets are protected by hardware vaults.
 - **Privacy by Design**: Mandatory tenantId mapping at the data-access layer.
 
-## 6. Industrial Performance & Resilience
+## 7. Industrial Performance & Resilience
 
 - **Self-Healing**: Automated fix loops that repair broken builds without human intervention.
 - **Chaos-Tested**: Weekly resilience experiments ensuring a 99.9% recovery rate.
 - **Prompt Evolution**: Systemic performance improvement through automated prompt mutations.
 
-## 7. Quick Start
+## 8. Quick Start
 
 ### Prerequisites
 - Node.js 20+
@@ -98,7 +105,7 @@ make apply
 make deploy-staging
 ```
 
-## 8. Strategic Governance & Business Vision
+## 9. Strategic Governance & Business Vision
 
 Amaswarn is governed by a strict collaboration framework and a sovereign business strategy. Detailed models are available in the dedicated governance directory:
 
